@@ -57,6 +57,7 @@ class User extends BaseUser
 
     /**
      * @var integer
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 2,
      *      max = 15,
@@ -64,7 +65,7 @@ class User extends BaseUser
      *      maxMessage = "Mobile cannot be longer than {{ limit }} characters")
      * @Assert\Regex(pattern="/^[0-9]*$/",
      *     message="Only digits 0-9")
-     * @ORM\Column(name="mobile", type="string", nullable=true)
+     * @ORM\Column(name="mobile", type="string")
      */
     private $mobile;
 

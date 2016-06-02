@@ -1,5 +1,286 @@
 /*======     GENERAL STYLES      ======*/
+body {
+    background: #ecf0f1;
+    margin: 0px;
+    padding: 0px;
+}
 .mtop20{
     margin-top: 20px;
 }
+.mtop10{
+    margin-top: 10px;
+}
+.custom-btn{
+    border:1px solid #34495e;
+    margin-bottom:6px;
+    color:#34495e;
+    font-size:12px;
+    margin-top: 30px;
+}
 /*======     END OF GENERAL STYLES      ======*/
+
+/*======     LAYOUT STYLES      ======*/
+.content-header-wrapper{
+    border-bottom: 1px solid #bfc3c4;
+}
+.menu-wrapper{
+    width: 12%;
+    padding: 0px;
+}
+.main-wrapper{
+    margin-left: 233px;
+    color:#34495e;
+    font-size: small;
+    margin-top: 10px;
+}
+.content-header{
+    padding-bottom:8px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.flash-msg-wrapper{
+    height: 27px;
+}
+.content{
+    margin-top:30px;
+}
+.flash-msg-wrapper{
+    height: 27px;
+}
+    /*ERROR IN TOP BELT*/
+    .alert-style{
+        padding:1px;
+        font-size: 20px;
+        text-align: center;
+    }
+    .alert-success{
+        background-color: #5CB85C;
+        color: white;
+    }
+    .alert-danger{
+        background-color: #D9534F;
+        color:white;
+    }
+    #company-description{
+        font-size: 20px;
+        font-style: italic;
+    }
+    /*END OF ERROR IN TOP BELT*/
+
+    /*TOP BELT WITH IMAGE*/
+    .top-belt-logo{
+        position: absolute;
+        top: 22px;
+        left: 93px;
+        color: #FFF;
+        font-size: 64px;
+        font-weight: bolder;
+        font-family: "Trebuchet MS";
+    }
+    /*END OF TOP BELT WITH IMAGE*/
+/*======     END OF LAYOUT STYLES      ======*/
+
+
+/*======     CONTENT      ======*/
+.content-wrapper{
+    padding-top: 30px;
+}
+/*======     END OF CONTENT      ======*/
+
+
+/*======     MEDIA    ======*/
+@media (max-width: 767px) {
+    .top-belt-logo{
+        top: 8px;
+        left: 137px;
+        color: #FFF;
+        font-size: 38px;
+    }
+    .top-banner{
+        height: 80px;
+    }
+}
+@media (min-width: 767px) {
+    .nav-side-menu .menu-list .menu-content {
+        display: block;
+    }
+}
+/*======     END OF MEDIA    ======*/
+
+
+
+/*======     END OF SIDE MENU    ======*/
+.custom-nav {
+    position: relative;
+}
+
+.logo_text {
+    position: absolute;
+    top: 22px;
+    left: 93px;
+    color: #FFF;
+    font-size: 64px;
+    font-weight: bolder;
+    font-family: "Trebuchet MS";
+}
+.menu-fa{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav-side-menu {
+    font-family: "Trebuchet MS";
+    font-size: small;
+    position: absolute;
+    width: 233px;
+    height: 100%;
+    color: #ffffff;
+    border-right: 2px solid #bfc3c4;
+}
+
+.nav-side-menu .brand {
+    display: block;
+    height: 60px;
+}
+
+.nav-side-menu .toggle-btn {
+    display: none;
+}
+
+.nav-side-menu ul,
+.nav-side-menu li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    text-indent: 10px;
+    line-height: 50px;
+}
+
+.nav-side-menu ul .collapsed .arrow:before,
+.nav-side-menu li .collapsed .arrow:before {
+    font-family: FontAwesome;
+    content: "\f053";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    float: right;
+}
+
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+    font-family: FontAwesome;
+    content: "\f078";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    float: right;
+}
+
+.nav-side-menu ul .active a,
+.nav-side-menu li .active a {
+    color: white;
+}
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+    border-left: 3px solid #44b6ae;
+    background-color: #364252;
+
+}
+
+.sub-menu li .active {
+    border-left: none;
+    color: orange;
+    font-weight: bolder;
+    font-size: 13px;
+    background-color: transparent;
+}
+
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+    color: #1AAE98;
+}
+
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+    background-color: #ecf0f1;
+    border: none;
+    line-height: 40px;
+    margin-left: 0px;
+    padding-left: 40px;
+    font-size: 10px;
+}
+
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+    background-color: #364252;
+}
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.nav-side-menu ul .sub-sub-menu li:before,
+.nav-side-menu li .sub-sub-menu li:before {
+    font-family: FontAwesome;
+    content: "\f105 \f105";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.nav-side-menu li {
+    padding-left: 0px;
+    border-left: 3px solid #364252;
+}
+
+.nav-side-menu li a {
+    text-decoration: none;
+    color: #364252;
+}
+
+.menu-content li:active > ul > li a:active {
+    color: red;
+}
+
+.nav-side-menu li:active a {
+    color: #ffa500;
+}
+
+.nav-side-menu li:hover a {
+    color: #e7e7e7;
+}
+
+.nav-side-menu li a i {
+    padding-left: 10px;
+    width: 20px;
+    padding-right: 20px;
+}
+
+.nav-side-menu li:hover {
+    border-left: 3px solid #364252;
+    background-color: #364252;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.nav-side-menu li:focus {
+    background-color: red;
+}
+
+.nav-side-menu .menu-list .menu-content {
+    display: block;
+}
+/*======     END OF SIDE MENU    ======*/

@@ -15,7 +15,66 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
-{% block body %}{% endblock %}
+
+{# ======     TOP BELT WITH IMAGE    ====== #}
+<div>
+    {% image 'images/top_baner.png' %}
+    <img src="{{ asset_url }}" alt="Office" class="top-banner"/>
+    {% endimage %}
+    <div class="top-belt-logo">{{ 'any.mac' }}</div>
+</div>
+{# ======     END OF TOP BELT WITH IMAGE    ====== #}
+
+
+{# ======     SIEDE MENU    ====== #}
+<div class="nav-side-menu">
+    <div class="brand"></div>{#here should be name of logged user#}
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+    <div class="menu-list">
+        {% include '@App/super_admin_menu.html.twig' %}
+    </div>
+</div>
+{# ======     END OF SIEDE MENU    ====== #}
+
+
+
+<div class="main-wrapper">
+    <div class="main-content-wrapper ">
+        {% block content_header %}
+            <div class="col-md-12 content-header-wrapper">
+                <div class="col-md-4 location-name">
+                    {% if controller_action == 'new_user' %}
+                        <div class="content-header">{{ 'users'|upper|trans({},'layout') }}</div>
+                    {% endif %}
+                </div>
+
+                {# ======     FLASH MESSAGES    ====== #}
+                <div class="col-md-4 messages">
+                    <div class="flash-msg-wrapper">
+                        <div class="flash-msg-content">
+
+                            {% if app.session.flashBag is not empty %}
+                                {% for type,msg in app.session.flashBag.all %}
+
+                                    <div class="alert alert-{{ type }} alert-style">
+                                        {% for one_msg in msg %}
+                                            {{ one_msg }}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {# ======     END OF FLASH MESSAGES    ====== #}
+                <div class="col-md-4"></div>
+            </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+    </div>
+</div>
+
 
 {% block javascripts %}
     {% javascripts

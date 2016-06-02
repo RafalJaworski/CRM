@@ -1,21 +1,11 @@
 {% extends "@App/layout.html.twig" %}
 
-{% block title %}{{ 'Employee add'|trans({},'employee_add') }}{% endblock %}
+{% block title %}{{ 'New User'|trans({},'user') }}{% endblock %}
 {% block body %}
-    <div class="col-md-12">
-        <div class="col-md-4 employee-details-container">
-            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
-            {{ form_row(form.firstName,{'attr':{'class': 'form-control'}}) }}
-            {{ form_row(form.lastName,{'attr':{'class': 'form-control'}}) }}
-            {{ form_row(form.username,{'attr':{'class': 'form-control'}}) }}
-            {{ form_row(form.email,{'attr':{'class': 'form-control'}}) }}
-            {{ form_row(form.plain_password,{'attr':{'class': 'form-control'}}) }}
-            {{ form_row(form.mobile,{'attr':{'class': 'form-control'}}) }}
-
-            <input type="submit" class="btn custom-btn mtop20 pull-right"
-                   value="{{ 'Create User'|trans({},'employee_add') }}"/>
-
-            {{ form_end(form) }}
+    <div class="col-md-12 content-wrapper">
+        <div class="col-md-4 ">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form(form) }}
         </div>
     </div>
 {% endblock %}

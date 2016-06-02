@@ -2,15 +2,16 @@
 
 namespace AppBundle\Controller\User;
 
+use AppBundle\Controller\BaseController;
 use AppBundle\Entity\User\User;
 use AppBundle\Form\User\UserType;
+use AppBundle\Helper\Message;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     /**
      * THIS CLASS OVERRIDE FOSUSERBUNDLE REGISTERACTION BY OVERRIDING ROUTING.
@@ -35,10 +36,11 @@ class UserController extends Controller
             $user->setCreatedBy($this->getUser());
             $userManager->updateUser($user);
 
-            return $this->redirectToRoute('homepage');
+            $this->addFlash(Message::TYPE_SUCCESS, $this->get('translator')->trans(Message::MSG_SUCCESS));
+            return $this->redirectToRoute('fos_user_registration_register');
         }
 
-        return $this->render('@App/User/new.html.twig', ['form' => $form->createView()]);
+        return $this->showView('@App/User/new.html.twig', 'new_user', $form);
     }
 }
 
