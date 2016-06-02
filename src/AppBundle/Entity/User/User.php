@@ -4,10 +4,12 @@ namespace AppBundle\Entity\User;
 
 use DateTime;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\User\UserRepository")
  */
@@ -23,34 +25,59 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 15,
+     *      minMessage = "First name is too short. At least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+     * @Assert\Regex(
+     *     pattern="/^[A-Za-z]*$/",
+     *     message="Your first name cannot contain numbers,spaces and special characters")
+     *
+     * @ORM\Column(name="first_name", type="string")
      */
     private $firstName;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Last name is too short. At least {{ limit }} characters long",
+     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters")
+     * @Assert\Regex(
+     *     pattern="/^[A-Za-z]*$/",
+     *     message="Your first name cannot contain numbers,spaces and special characters")
      *
-     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="last_name", type="string")
      */
     private $lastName;
 
     /**
      * @var integer
-     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 15,
+     *      minMessage = "Mobile is too short. At least {{ limit }} characters long",
+     *      maxMessage = "Mobile cannot be longer than {{ limit }} characters")
+     * @Assert\Regex(pattern="/^[0-9]*$/",
+     *     message="Only digits 0-9")
      * @ORM\Column(name="mobile", type="string", nullable=true)
      */
     private $mobile;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime()
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime()
      * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
@@ -122,6 +149,7 @@ class User extends BaseUser
     {
         return $this->lastName;
     }
+
 
     /**
      * Set mobile
@@ -248,3 +276,4 @@ class User extends BaseUser
         return $this->createdUsers;
     }
 }
+

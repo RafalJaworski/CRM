@@ -1,0 +1,20 @@
+registration:
+    check_email: 'An email has been sent to %email%. It contains an activation link you must click to activate your account.'
+    confirmed: 'Congrats %username%, your account is now activated.'
+    back: 'Back to the originating page.'
+    submit: Register
+    flash:
+        user_created: 'The user has been created successfully'
+    email:
+        subject: 'Registration email'
+        message: |
+
+                Hello %username%!
+
+                To finish activating your account - please visit: %confirmationUrl%
+
+
+                Regards,
+                The Team.
+
+
