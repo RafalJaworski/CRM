@@ -5,7 +5,6 @@ namespace AppBundle\Form\User;
 use AppBundle\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +20,6 @@ class UserType extends AbstractType
             ->add('lastName',TextType::class,['label'=>'new_user.label.lastname'])
             ->add('username', TextType::class,['label'=>'new_user.label.username'])
             ->add('email',EmailType::class,['label'=>'new_user.label.email'])
-            ->add('plain_password',PasswordType::class,['label'=>'new_user.label.password'])
             ->add('mobile',TextType::class,['label'=>'new_user.label.mobile'])
             ->add('submit',SubmitType::class,['label'=>'new_user.label.submit','attr'=>['class'=>'btn custom-btn mtop20 pull-right']]);
 
@@ -33,7 +31,7 @@ class UserType extends AbstractType
             [
                 'data_class'=>User::class,
                 'label'=>false,
-                'validation_groups' =>  array('Registration', 'Default'),
+                'validation_groups' =>  array('NoPasswordRegistration', 'Default'),
                 'translation_domain'=>'form'
             ]);
     }

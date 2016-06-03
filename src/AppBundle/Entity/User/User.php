@@ -25,17 +25,17 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank(groups={"registration"})
+     * @Assert\NotBlank(groups={"NoPasswordRegistration"})
      * @Assert\Length(
-     *      min = 2,
+     *      min = 3,
      *      max = 15,
      *      minMessage = "First name is too short. At least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
-     *      groups={"registration"})
+     *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
      *     message="Your first name cannot contain numbers,spaces and special characters",
-     *     groups={"registration"})
+     *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="first_name", type="string")
      */
@@ -43,17 +43,17 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank(groups={"registration"})
+     * @Assert\NotBlank(groups={"NoPasswordRegistration"})
      * @Assert\Length(
-     *      min = 2,
+     *      min = 4,
      *      max = 20,
      *      minMessage = "Last name is too short. At least {{ limit }} characters long",
      *      maxMessage = "Your last name cannot be longer than {{ limit }} characters",
-     *      groups={"registration"})
+     *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
      *     message="Your first name cannot contain numbers,spaces and special characters",
-     *     groups={"registration"})
+     *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="last_name", type="string")
      */
@@ -61,16 +61,16 @@ class User extends BaseUser
 
     /**
      * @var integer
-     * @Assert\NotBlank(groups={"registration"})
+     * @Assert\NotBlank(groups={"NoPasswordRegistration"})
      * @Assert\Length(
-     *      min = 2,
+     *      min = 7,
      *      max = 15,
      *      minMessage = "Mobile is too short. At least {{ limit }} characters long",
      *      maxMessage = "Mobile cannot be longer than {{ limit }} characters",
      *      groups={"registration"})
      * @Assert\Regex(pattern="/^[0-9]*$/",
      *      message="Only digits 0-9",
-     *      groups={"registration"})
+     *      groups={"NoPasswordRegistration"})
      * @ORM\Column(name="mobile", type="string")
      */
     private $mobile;
@@ -108,6 +108,11 @@ class User extends BaseUser
         if ((null == $this->createdAt) and (null == $this->updatedAt)) {
             $this->createdAt = new DateTime();
             $this->updatedAt = new DateTime();
+
+            if (null == $this->plainPassword) {
+                $this->plainPassword = substr
+                (str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+            }
         }
     }
 

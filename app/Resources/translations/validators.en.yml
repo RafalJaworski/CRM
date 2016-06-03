@@ -1,2 +1,5 @@
 new_password:
-    error: 'These passwords are not similar!'
+    error: 'These passwords are not similar !'
+
+new_user:
+    error: 'Wrong email format !'

@@ -20,6 +20,5 @@ new_user:
         lastname: 'Last Name'
         username: 'Username'
         email: 'Email'
-        password: 'Password'
         mobile: 'Mobile'
         submit: 'Create User'
