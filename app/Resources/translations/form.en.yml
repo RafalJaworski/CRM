@@ -1,3 +1,13 @@
+login:
+    title: 'Sign in'
+    login:
+        placeholder: 'Login or email'
+    password:
+        placeholder: 'Password'
+    rememberme: 'Remember me'
+    label:
+         submit: 'Sign in'
+
 new_password:
     label:
         password: 'Password'

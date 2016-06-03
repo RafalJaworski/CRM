@@ -1,0 +1,37 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block body %}
+    <div class="top-login-logo">{{ 'any.mac' }}</div>
+    <div class="wrap">
+        <div class="centered-box-wrapper">
+            <div class="col-md-12 login-form">
+                <h2 class="col-md-12 form-login-heading input-space"><span class="glyphicon glyphicon-lock"></span> {{ 'login.title'|trans({},'form') }}</h2>
+
+                <div class="col-md-12 mtop10">
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                        <input class="form-control input-lg input-space" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'login.login.placeholder'|trans({},'form') }}"/>
+
+                        <input class="form-control input-lg input-space" type="password" id="password" name="_password" required="required" placeholder="{{ 'login.password.placeholder'|trans({},'form') }}"/>
+
+                        <div class="checkbox ptop10">
+                            <label>
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on">{{ 'login.rememberme'|trans({},'form') }}
+                            </label>
+                            <div class="error-wrapper">
+                                {% if error %}
+                                    <div> {{ error.messageKey|upper|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'login.label.submit'|trans({},'form') }}" />
+                    </form>
+                </div>
+                <h2 class="col-md-12 form-login-heading input-space login-logo-bottom"> {{ 'any.mac' }}</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

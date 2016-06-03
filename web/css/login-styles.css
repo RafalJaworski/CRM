@@ -1,0 +1,95 @@
+body {
+    background-image: url("../images/fos_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
+}
+.wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.centered-box-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f4f4;
+    -webkit-box-shadow: 1px 3px 11px 9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 3px 11px 9px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 3px 11px 9px rgba(0, 0, 0, 0.75);
+}
+
+.login-form {
+    background-color: #f4f4f4;
+    height: 320px;
+    width: 400px;
+}
+
+.login-logo-bottom {
+    color: #7b7979;
+    font-size: small;
+    font-weight: bolder;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.input-space {
+    margin-bottom: 10px;
+}
+.error-wrapper{
+    color: red;
+}
+
+@media (min-width: 767px) {
+    .top-login-logo{
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-form {
+        background-color: #f4f4f4;
+        height: 325px;
+        margin: 20px 10px;
+    }
+
+    .input-space {
+        margin-top: 10px;
+
+    }
+
+    .form-login-heading {
+        padding-top: 30px;
+    }
+
+    .login-logo {
+        display: none;
+    }
+
+    .login-logo-bottom {
+        color: #7b7979;
+        font-size: small;
+        font-weight: bolder;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+    body {
+        background-image: none;
+        background-color: black;
+        margin: 0px;
+        padding: 0px;
+    }
+    .top-login-logo{
+        text-align: center;
+        margin-top: 20%;
+        color: #f4f4f4;
+        font-size: 64px;
+        font-weight: bolder;
+        font-family: "Trebuchet MS";
+    }
+    .centered-box-wrapper{
+        top: 31%;
+    }
+}
