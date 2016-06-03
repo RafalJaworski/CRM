@@ -1,0 +1,15 @@
+new_password:
+    label:
+        password: 'Password'
+        re-password: 'Repeat Password'
+        submit: 'Save'
+
+new_user:
+    label:
+        firstname: 'First Name'
+        lastname: 'Last Name'
+        username: 'Username'
+        email: 'Email'
+        password: 'Password'
+        mobile: 'Mobile'
+        submit: 'Create User'

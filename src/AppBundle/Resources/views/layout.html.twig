@@ -45,7 +45,9 @@
             <div class="col-md-12 content-header-wrapper">
                 <div class="col-md-4 location-name">
                     {% if controller_action == 'new_user' %}
-                        <div class="content-header">{{ 'users'|upper|trans({},'layout') }}</div>
+                        <div class="content-header">{{ 'new user'|upper|trans({},'layout') }}</div>
+                    {% elseif controller_action == 'confirmed_user' %}
+                        <div class="content-header">{{ 'confirmed user'|upper|trans({},'layout') }}</div>
                     {% endif %}
                 </div>
 

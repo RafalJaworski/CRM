@@ -1,0 +1,16 @@
+user_menu:
+    calendar: 'Calendar'
+    dashboard: 'Dashboard'
+    dayview: 'Day View'
+    orders: 'Orders'
+    tickets:
+        tickets: 'Tickets'
+        addticket: 'Add Ticket'
+        myopened: 'My opened tickets'
+        myclosed: 'My closed tickets'
+        allopened: 'All opened tickets'
+        allclosed: 'All closed tickets'
+    settings:
+        settings: 'Settings'
+        users: 'Users'
+    logout: 'Log Out'

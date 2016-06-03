@@ -25,15 +25,17 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"registration"})
      * @Assert\Length(
      *      min = 2,
      *      max = 15,
      *      minMessage = "First name is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      groups={"registration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="Your first name cannot contain numbers,spaces and special characters")
+     *     message="Your first name cannot contain numbers,spaces and special characters",
+     *     groups={"registration"})
      *
      * @ORM\Column(name="first_name", type="string")
      */
@@ -41,15 +43,17 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"registration"})
      * @Assert\Length(
      *      min = 2,
      *      max = 20,
      *      minMessage = "Last name is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters")
+     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters",
+     *      groups={"registration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="Your first name cannot contain numbers,spaces and special characters")
+     *     message="Your first name cannot contain numbers,spaces and special characters",
+     *     groups={"registration"})
      *
      * @ORM\Column(name="last_name", type="string")
      */
@@ -57,14 +61,16 @@ class User extends BaseUser
 
     /**
      * @var integer
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"registration"})
      * @Assert\Length(
      *      min = 2,
      *      max = 15,
      *      minMessage = "Mobile is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Mobile cannot be longer than {{ limit }} characters")
+     *      maxMessage = "Mobile cannot be longer than {{ limit }} characters",
+     *      groups={"registration"})
      * @Assert\Regex(pattern="/^[0-9]*$/",
-     *     message="Only digits 0-9")
+     *      message="Only digits 0-9",
+     *      groups={"registration"})
      * @ORM\Column(name="mobile", type="string")
      */
     private $mobile;
@@ -277,4 +283,3 @@ class User extends BaseUser
         return $this->createdUsers;
     }
 }
-

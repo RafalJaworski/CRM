@@ -2,48 +2,45 @@
 <ul id="menu-content" class="menu-content collapse out">
     _
     <li data-toggle="collapse" data-target="#calendar" class="{% if 'calendar' in route %}active{% else %}collapsed{% endif %}">
-        <a href="#"><span class="fa fa-calendar fa-lg menu-fa"></span> {{ 'Calendar'|trans({},'menu') }} </a>
+        <a href="#"><span class="fa fa-calendar fa-lg menu-fa"></span> {{ 'user_menu.calendar'|trans({},'menu') }} </a>
     </li>
     <li data-toggle="collapse" data-target="#dashboard" class="{% if 'dashboard' in route %}active{% else %}collapsed{% endif %}">
         <a  href="#">
-            <span class="fa fa-dashboard fa-lg menu-fa"></span> {{ 'Dashboard'|trans({},'menu') }}</a>
+            <span class="fa fa-dashboard fa-lg menu-fa"></span> {{ 'user_menu.dashboard'|trans({},'menu') }}</a>
     </li>
 
     <li data-toggle="collapse" data-target="#dayview" class="{% if 'dayview' in route %}active{% else %}collapsed{% endif %}">
-        <a href="#"><span class="fa fa-ticket fa-lg menu-fa"></span> {{ 'Day View'|trans({},'menu') }} </a>
+        <a href="#"><span class="fa fa-ticket fa-lg menu-fa"></span> {{ 'user_menu.dayview'|trans({},'menu') }} </a>
     </li>
 
     <li data-toggle="collapse" data-target="#orders" class="{% if 'order' in route %}active{% else %}collapsed{% endif %}">
-        <a href="#orders"><span class="fa fa-shopping-cart fa-lg menu-fa"></span> {{ 'Orders'|trans({},'menu') }} </a>
+        <a href="#orders"><span class="fa fa-shopping-cart fa-lg menu-fa"></span> {{ 'user_menu.orders'|trans({},'menu') }} </a>
     </li>
 
 
     <li  data-toggle="collapse" data-target="#tickets" class="{% if 'ticket' in route %}active{% else %}collapsed{% endif %}">
 
-        <a href="#"><span class="fa fa-ticket fa-lg menu-fa"></span> {{ 'Tickets'|trans({},'menu') }} </a>
+        <a href="#"><span class="fa fa-ticket fa-lg menu-fa"></span> {{ 'user_menu.tickets.tickets'|trans({},'menu') }} </a>
     </li>
 
     <ul class="sub-menu collapse {% if 'ticket' in route %}in{% endif %}" id="tickets">
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Add ticket'|trans({},'menu') }}</a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Resolved all'|trans({},'menu') }}</a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Resolve I created'|trans({},'menu') }}</a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Unresolve all'|trans({},'menu') }}</a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Unresolved assigned to me'|trans({},'menu') }}</a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Unresolved I created'|trans({},'menu') }}</a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.tickets.addticket'|trans({},'menu') }}</a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.tickets.allclosed'|trans({},'menu') }}</a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.tickets.allopened'|trans({},'menu') }}</a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.tickets.myclosed'|trans({},'menu') }}</a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.tickets.myopened'|trans({},'menu') }}</a></li>
     </ul>
     <li data-toggle="collapse" data-target="#settings" class="{% if 'settings' in route %}active{% else %}collapsed{% endif %}">
-        <a href="#"><span class="fa fa-gear fa-lg menu-fa"></span> {{ 'Settings'|trans({},'menu') }} </a>
+        <a href="#"><span class="fa fa-gear fa-lg menu-fa"></span> {{ 'user_menu.settings.settings'|trans({},'menu') }} </a>
     </li>
     <ul class="sub-menu collapse {% if 'settings' in route %}in{% endif %}" id="settings">
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Categories'|trans({},'menu') }} </a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Roles'|trans({},'menu') }} </a></li>
-        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'Users'|trans({},'menu') }} </a></li>
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.settings.users'|trans({},'menu') }} </a></li>
     </ul>
 
     <li>
         <a href="{{ path('fos_user_security_logout') }}">
             <span class="glyphicon glyphicon-log-out fa-lg menu-fa"></span>
-            {{ 'Log out'|trans({},'menu') }}
+            {{ 'user_menu.logout'|trans({},'menu') }}
         </a>
     </li>
 

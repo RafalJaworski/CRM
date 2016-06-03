@@ -17,13 +17,13 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName',TextType::class)
-            ->add('lastName',TextType::class)
-            ->add('username', TextType::class)
-            ->add('email',EmailType::class)
-            ->add('plain_password',PasswordType::class)
-            ->add('mobile',TextType::class)
-            ->add('submit',SubmitType::class,['attr'=>['class'=>'btn custom-btn mtop20 pull-right']]);
+            ->add('firstName',TextType::class,['label'=>'new_user.label.firstname'])
+            ->add('lastName',TextType::class,['label'=>'new_user.label.lastname'])
+            ->add('username', TextType::class,['label'=>'new_user.label.username'])
+            ->add('email',EmailType::class,['label'=>'new_user.label.email'])
+            ->add('plain_password',PasswordType::class,['label'=>'new_user.label.password'])
+            ->add('mobile',TextType::class,['label'=>'new_user.label.mobile'])
+            ->add('submit',SubmitType::class,['label'=>'new_user.label.submit','attr'=>['class'=>'btn custom-btn mtop20 pull-right']]);
 
     }
 
@@ -33,7 +33,8 @@ class UserType extends AbstractType
             [
                 'data_class'=>User::class,
                 'label'=>false,
-                'validation_groups' =>  array('Registration', 'Default')
+                'validation_groups' =>  array('Registration', 'Default'),
+                'translation_domain'=>'form'
             ]);
     }
 

@@ -1,0 +1,2 @@
+new_password:
+    error: 'These passwords are not similar!'
