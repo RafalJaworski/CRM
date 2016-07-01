@@ -4,27 +4,23 @@ body {
     margin: 0px;
     padding: 0px;
 }
-
-.mtop20 {
+.mtop20{
     margin-top: 20px;
 }
-
-.mtop10 {
+.mtop10{
     margin-top: 10px;
 }
-
-.custom-btn {
-    border: 1px solid #34495e;
-    margin-bottom: 6px;
-    color: #34495e;
-    font-size: 12px;
+.custom-btn{
+    border:1px solid #34495e;
+    margin-bottom:6px;
+    color:#34495e;
+    font-size:12px;
     margin-top: 30px;
 }
-
 /*======     END OF GENERAL STYLES      ======*/
 
 /*======     LAYOUT STYLES      ======*/
-.top-belt-logo {
+.top-belt-logo{
     position: absolute;
     top: 22px;
     left: 93px;
@@ -33,188 +29,58 @@ body {
     font-weight: bolder;
     font-family: "Trebuchet MS";
 }
-
-.content-header-wrapper {
+.content-header-wrapper{
     border-bottom: 1px solid #bfc3c4;
 }
-
-.main-wrapper {
+.main-wrapper{
     margin-left: 233px;
-    color: #34495e;
+    color:#34495e;
     font-size: small;
     margin-top: 10px;
 }
-
-.content-header {
-    padding-bottom: 8px;
+.content-header{
+    padding-bottom:8px;
     font-weight: bolder;
     font-size: 18px;
 }
-
-.flash-msg-wrapper {
+.flash-msg-wrapper{
     height: 27px;
 }
+    /*ERROR IN TOP BELT*/
+    .alert-style{
+        padding:1px;
+        font-size: 20px;
+        text-align: center;
+    }
+    .alert-success{
+        background-color: #5CB85C;
+        color: white;
+    }
+    .alert-danger{
+        background-color: #D9534F;
+        color:white;
+    }
+    /*END OF ERROR IN TOP BELT*/
 
-/*ERROR IN TOP BELT*/
-.alert-style {
-    padding: 1px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.alert-success {
-    background-color: #5CB85C;
-    color: white;
-}
-
-.alert-danger {
-    background-color: #D9534F;
-    color: white;
-}
-
-/*END OF ERROR IN TOP BELT*/
-
-/*TOP BELT WITH IMAGE*/
-.top-belt-logo {
-    position: absolute;
-    top: 16px;
-    left: 142px;
-    color: #FFF;
-    font-size: 40px;
-    font-weight: bolder;
-    font-family: "Trebuchet MS";
-}
-
-/*END OF TOP BELT WITH IMAGE*/
+    /*TOP BELT WITH IMAGE*/
+    .top-belt-logo{
+        position: absolute;
+        top: 16px;
+        left: 142px;
+        color: #FFF;
+        font-size: 40px;
+        font-weight: bolder;
+        font-family: "Trebuchet MS";
+    }
+    /*END OF TOP BELT WITH IMAGE*/
 /*======     END OF LAYOUT STYLES      ======*/
 
+
 /*======     CONTENT      ======*/
-.content-wrapper {
+.content-wrapper{
     padding-top: 30px;
 }
-
 /*======     END OF CONTENT      ======*/
-
-/*======     MEDIA    ======*/
-@media (max-width: 767px) {
-    /*MENU*/
-    .nav-side-menu {
-        position: relative;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .nav-side-menu .toggle-btn {
-        display: block;
-        cursor: pointer;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        z-index: 10 !important;
-        padding: 3px;
-        background-color: #ffffff;
-        color: #000;
-        width: 40px;
-        text-align: center;
-    }
-
-    .brand {
-        text-align: left !important;
-        font-size: 13px;
-        padding-left: 30px;
-        border-bottom: 1px solid #364252;
-        line-height: 50px !important;
-    }
-
-    .menu-fa {
-        display: none;
-    }
-
-    .nav-side-menu ul {
-        text-align: center;
-    }
-
-    .nav-side-menu ul .sub-menu li {
-        padding-left: 0;
-        text-align: center;
-    }
-
-    .nav-side-menu li {
-        font-size: medium;
-    }
-
-    /*END OF MENU*/
-
-    /*LAYOUT*/
-    .top-banner {
-        height: 40px;
-    }
-
-    .top-belt-logo {
-        top: 8px;
-        width: 100%;
-        left: 0;
-        color: #FFF;
-        font-size: 15px;
-    }
-
-    .top-belt-center {
-        margin: 0px auto;
-        width: 50%;
-        text-align: center;
-    }
-
-    .content-header-wrapper {
-        padding-bottom: 10px;
-    }
-    /*END OF LAYOUT*/
-
-    /*CONTENT*/
-    .main-wrapper {
-        margin-left: 0px;
-    }
-    /*END OF CONTENT*/
-}
-
-@media (min-width: 767px) and  (max-width: 980px) {
-    /*LAYOUT*/
-    .top-belt-logo {
-        top: 3px;
-        left: 192px;
-        font-size: 17px
-    }
-    /*END OF LAYOUT*/
-}
-
-@media (min-width: 981px) and  (max-width: 1439px) {
-    /*LAYOUT*/
-    .top-belt-logo {
-        top: 8px;
-        left: 192px;
-        font-size: 19px;
-    }
-    /*END OF LAYOUT*/
-}
-
-@media (min-width: 1440px) and  (max-width: 2160px) {
-    /*LAYOUT*/
-    .top-belt-logo {
-        top: 14px;
-        left: 177px;
-        font-size: 25px;
-    }
-    /*END OF LAYOUT*/
-}
-
-@media (min-width: 767px) {
-    /*MENU*/
-    .nav-side-menu .menu-list .menu-content {
-        display: block;
-    }
-    /*END OF MENU*/
-}
-
-/*======     END OF MEDIA    ======*/
 
 /*======     SIDE MENU    ======*/
 .logo_text {
@@ -226,8 +92,7 @@ body {
     font-weight: bolder;
     font-family: "Trebuchet MS";
 }
-
-.menu-fa {
+.menu-fa{
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -383,4 +248,114 @@ body {
     transition: all 1s ease;
 }
 
+/*======     MEDIA    ======*/
+@media (max-width: 767px) {
+    /*menu*/
+    .nav-side-menu {
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .nav-side-menu .toggle-btn {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10 !important;
+        padding: 3px;
+        background-color: #ffffff;
+        color: #000;
+        width: 40px;
+        text-align: center;
+    }
+    .brand {
+        text-align: left !important;
+        font-size: 13px;
+        padding-left: 30px;
+        border-bottom: 1px solid #364252;
+        line-height: 50px !important;
+    }
+    .menu-fa{
+        display: none;
+    }
+    .nav-side-menu ul{
+        text-align: center;
+    }
+    .nav-side-menu ul .sub-menu li{
+        padding-left: 0;
+        text-align: center;
+    }
+    .nav-side-menu li{
+        font-size: medium;
+    }
+    /*end of menu*/
+
+    /*layout*/
+    .top-banner{
+        height: 40px;
+    }
+    .top-belt-logo{
+        top: 8px;
+        width:100%;
+        left: 0;
+        color: #FFF;
+        font-size: 15px;
+    }
+    .top-belt-center{
+        margin: 0px auto;
+        width: 50%;
+        text-align: center;
+    }
+    .content-header-wrapper{
+        padding-bottom: 10px;
+    }
+    /*end of layout*/
+
+    /*content*/
+    .main-wrapper{
+        margin-left: 0px;
+    }
+    /*end of content*/
+}
+@media (min-width: 767px) and  (max-width: 980px){
+    /*layout*/
+    .top-belt-logo{
+        top: 3px;
+        left: 192px;
+        font-size: 17px
+    }
+    /* end of layout*/
+}
+@media (min-width: 981px) and  (max-width: 1439px){
+    /*layout*/
+    .top-belt-logo{
+        top: 8px;
+        left: 192px;
+        font-size: 19px;
+    }
+    /*end of layout*/
+}
+@media (min-width: 1440px) and  (max-width: 2160px) {
+    /*layout*/
+    .top-belt-logo{
+        top: 14px;
+        left: 177px;
+        font-size: 25px;
+    }
+    /*end of layout*/
+}
+@media (min-width: 767px) {
+    /*menu*/
+    .nav-side-menu .menu-list .menu-content {
+        display: block;
+    }
+    /*end of menu*/
+}
+/*======     END OF MEDIA    ======*/
+
+
+/*.nav-side-menu .menu-list .menu-content {*/
+    /*display: block;*/
+/*}*/
 /*======     END OF SIDE MENU    ======*/
