@@ -61,7 +61,7 @@
                 </option>
             </constraint>
             <constraint name="Regex">
-                <option name="pattern">/^[a-zA-Z0-9_.+-]{3,}+@[a-zA-Z0-9-]{2,}+\.[a-zA-Z0-9-.]{2,}+/</option>
+                <option name="pattern">/^[a-zA-Z0-9_.+-]{2,}+@[a-zA-Z0-9-]{2,}+\.[a-zA-Z0-9-.]{2,}+/</option>
                 <option name="message">new_user.error</option>
                 <option name="groups">
                     <value>NoPasswordRegistration</value>

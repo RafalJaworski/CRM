@@ -1,6 +1,5 @@
 {% set route = app.request.get('_route') %}
 <ul id="menu-content" class="menu-content collapse out">
-    _
     <li data-toggle="collapse" data-target="#calendar" class="{% if 'calendar' in route %}active{% else %}collapsed{% endif %}">
         <a href="#"><span class="fa fa-calendar fa-lg menu-fa"></span> {{ 'user_menu.calendar'|trans({},'menu') }} </a>
     </li>

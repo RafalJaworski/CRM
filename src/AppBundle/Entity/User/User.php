@@ -62,7 +62,6 @@ class User extends BaseUser
 
     /**
      * @var integer
-     * @Assert\NotBlank(groups={"NoPasswordRegistration"})
      * @Assert\Length(
      *      min = 7,
      *      max = 15,
@@ -72,7 +71,7 @@ class User extends BaseUser
      * @Assert\Regex(pattern="/^[0-9]*$/",
      *      message="Only digits 0-9",
      *      groups={"NoPasswordRegistration"})
-     * @ORM\Column(name="mobile", type="string")
+     * @ORM\Column(name="mobile", type="string", nullable=true)
      */
     private $mobile;
 
@@ -296,3 +295,4 @@ class User extends BaseUser
         return $this->createdUsers;
     }
 }
+

@@ -15,20 +15,21 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
+{% set route = app.request.get('_route') %}
 
 {# ======     TOP BELT WITH IMAGE    ====== #}
 <div>
     {% image 'images/top_baner.png' %}
-    <img src="{{ asset_url }}" alt="Office" class="top-banner"/>
+    <img src="{{ asset_url }}" alt="Office" class="top-banner img-responsive"/>
     {% endimage %}
-    <div class="top-belt-logo">{{ 'any.mac' }}</div>
+    <div class="top-belt-logo"><div class="top-belt-center">{{ 'any.mac' }}</div></div>
 </div>
 {# ======     END OF TOP BELT WITH IMAGE    ====== #}
 
 
 {# ======     SIEDE MENU    ====== #}
 <div class="nav-side-menu">
-    <div class="brand"></div>{#here should be name of logged user#}
+    <div class="brand"><a href="#">{{ app.user.username }}</a></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
     <div class="menu-list">
@@ -43,18 +44,20 @@
     <div class="main-content-wrapper ">
         {% block content_header %}
             <div class="col-md-12 content-header-wrapper">
+                {#======     ACTUAL LOCATION    ====== #}
                 <div class="col-md-4 location-name">
                     {% set route = app.request.get('_route') %}
 
                     {% if route == 'fos_user_registration_register' %}
-                        <div class="content-header">{{ 'new user'|upper|trans({},'user') }}</div>
+                        <div class="content-header">{{ 'new_user.tab_name'|trans({},'user')|upper }}</div>
                     {% elseif route == 'fos_user_registration_confirmed' %}
-                        <div class="content-header">{{ 'confirmed user'|upper|trans({},'user') }}</div>
+                        <div class="content-header">{{ 'confirm_user.tab_name'|trans({},'user')|upper }}</div>
                     {% endif %}
                 </div>
+                {#======     END OF ACTUAL LOCATION    ====== #}
 
-                {# ======     FLASH MESSAGES    ====== #}
-                <div class="col-md-4 messages">
+                {#======     FLASH MESSAGES    ====== #}
+                <div class="col-md-8 messages">
                     <div class="flash-msg-wrapper">
                         <div class="flash-msg-content">
 
@@ -71,8 +74,7 @@
                         </div>
                     </div>
                 </div>
-                {# ======     END OF FLASH MESSAGES    ====== #}
-                <div class="col-md-4"></div>
+                 {#======     END OF FLASH MESSAGES    ====== #}
             </div>
         {% endblock %}
         {% block body %}{% endblock %}

@@ -4,116 +4,219 @@ body {
     margin: 0px;
     padding: 0px;
 }
-.mtop20{
+
+.mtop20 {
     margin-top: 20px;
 }
-.mtop10{
+
+.mtop10 {
     margin-top: 10px;
 }
-.custom-btn{
-    border:1px solid #34495e;
-    margin-bottom:6px;
-    color:#34495e;
-    font-size:12px;
+
+.custom-btn {
+    border: 1px solid #34495e;
+    margin-bottom: 6px;
+    color: #34495e;
+    font-size: 12px;
     margin-top: 30px;
 }
+
 /*======     END OF GENERAL STYLES      ======*/
 
 /*======     LAYOUT STYLES      ======*/
-.content-header-wrapper{
+.top-belt-logo {
+    position: absolute;
+    top: 22px;
+    left: 93px;
+    color: #FFF;
+    font-size: 64px;
+    font-weight: bolder;
+    font-family: "Trebuchet MS";
+}
+
+.content-header-wrapper {
     border-bottom: 1px solid #bfc3c4;
 }
-.menu-wrapper{
-    width: 12%;
-    padding: 0px;
-}
-.main-wrapper{
+
+.main-wrapper {
     margin-left: 233px;
-    color:#34495e;
+    color: #34495e;
     font-size: small;
     margin-top: 10px;
 }
-.content-header{
-    padding-bottom:8px;
+
+.content-header {
+    padding-bottom: 8px;
     font-weight: bolder;
     font-size: 18px;
 }
-.flash-msg-wrapper{
-    height: 27px;
-}
-.content{
-    margin-top:30px;
-}
-.flash-msg-wrapper{
-    height: 27px;
-}
-    /*ERROR IN TOP BELT*/
-    .alert-style{
-        padding:1px;
-        font-size: 20px;
-        text-align: center;
-    }
-    .alert-success{
-        background-color: #5CB85C;
-        color: white;
-    }
-    .alert-danger{
-        background-color: #D9534F;
-        color:white;
-    }
-    #company-description{
-        font-size: 20px;
-        font-style: italic;
-    }
-    /*END OF ERROR IN TOP BELT*/
 
-    /*TOP BELT WITH IMAGE*/
-    .top-belt-logo{
-        position: absolute;
-        top: 22px;
-        left: 93px;
-        color: #FFF;
-        font-size: 64px;
-        font-weight: bolder;
-        font-family: "Trebuchet MS";
-    }
-    /*END OF TOP BELT WITH IMAGE*/
+.flash-msg-wrapper {
+    height: 27px;
+}
+
+/*ERROR IN TOP BELT*/
+.alert-style {
+    padding: 1px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #5CB85C;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #D9534F;
+    color: white;
+}
+
+/*END OF ERROR IN TOP BELT*/
+
+/*TOP BELT WITH IMAGE*/
+.top-belt-logo {
+    position: absolute;
+    top: 16px;
+    left: 142px;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: "Trebuchet MS";
+}
+
+/*END OF TOP BELT WITH IMAGE*/
 /*======     END OF LAYOUT STYLES      ======*/
 
-
 /*======     CONTENT      ======*/
-.content-wrapper{
+.content-wrapper {
     padding-top: 30px;
 }
-/*======     END OF CONTENT      ======*/
 
+/*======     END OF CONTENT      ======*/
 
 /*======     MEDIA    ======*/
 @media (max-width: 767px) {
-    .top-belt-logo{
+    /*MENU*/
+    .nav-side-menu {
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .nav-side-menu .toggle-btn {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10 !important;
+        padding: 3px;
+        background-color: #ffffff;
+        color: #000;
+        width: 40px;
+        text-align: center;
+    }
+
+    .brand {
+        text-align: left !important;
+        font-size: 13px;
+        padding-left: 30px;
+        border-bottom: 1px solid #364252;
+        line-height: 50px !important;
+    }
+
+    .menu-fa {
+        display: none;
+    }
+
+    .nav-side-menu ul {
+        text-align: center;
+    }
+
+    .nav-side-menu ul .sub-menu li {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .nav-side-menu li {
+        font-size: medium;
+    }
+
+    /*END OF MENU*/
+
+    /*LAYOUT*/
+    .top-banner {
+        height: 40px;
+    }
+
+    .top-belt-logo {
         top: 8px;
-        left: 137px;
+        width: 100%;
+        left: 0;
         color: #FFF;
-        font-size: 38px;
+        font-size: 15px;
     }
-    .top-banner{
-        height: 80px;
+
+    .top-belt-center {
+        margin: 0px auto;
+        width: 50%;
+        text-align: center;
     }
+
+    .content-header-wrapper {
+        padding-bottom: 10px;
+    }
+    /*END OF LAYOUT*/
+
+    /*CONTENT*/
+    .main-wrapper {
+        margin-left: 0px;
+    }
+    /*END OF CONTENT*/
 }
+
+@media (min-width: 767px) and  (max-width: 980px) {
+    /*LAYOUT*/
+    .top-belt-logo {
+        top: 3px;
+        left: 192px;
+        font-size: 17px
+    }
+    /*END OF LAYOUT*/
+}
+
+@media (min-width: 981px) and  (max-width: 1439px) {
+    /*LAYOUT*/
+    .top-belt-logo {
+        top: 8px;
+        left: 192px;
+        font-size: 19px;
+    }
+    /*END OF LAYOUT*/
+}
+
+@media (min-width: 1440px) and  (max-width: 2160px) {
+    /*LAYOUT*/
+    .top-belt-logo {
+        top: 14px;
+        left: 177px;
+        font-size: 25px;
+    }
+    /*END OF LAYOUT*/
+}
+
 @media (min-width: 767px) {
+    /*MENU*/
     .nav-side-menu .menu-list .menu-content {
         display: block;
     }
+    /*END OF MENU*/
 }
+
 /*======     END OF MEDIA    ======*/
 
-
-
-/*======     END OF SIDE MENU    ======*/
-.custom-nav {
-    position: relative;
-}
-
+/*======     SIDE MENU    ======*/
 .logo_text {
     position: absolute;
     top: 22px;
@@ -123,7 +226,8 @@ body {
     font-weight: bolder;
     font-family: "Trebuchet MS";
 }
-.menu-fa{
+
+.menu-fa {
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -141,6 +245,9 @@ body {
 .nav-side-menu .brand {
     display: block;
     height: 60px;
+    color: #364252;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .nav-side-menu .toggle-btn {
@@ -276,11 +383,4 @@ body {
     transition: all 1s ease;
 }
 
-.nav-side-menu li:focus {
-    background-color: red;
-}
-
-.nav-side-menu .menu-list .menu-content {
-    display: block;
-}
 /*======     END OF SIDE MENU    ======*/
