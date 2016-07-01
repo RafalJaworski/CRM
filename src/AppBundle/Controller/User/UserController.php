@@ -37,7 +37,7 @@ class UserController extends BaseController
             return $this->redirectAfterSuccess('fos_user_registration_register');
         }
 
-        return $this->showView('@App/User/new.html.twig', $form);
+        return $this->showView(':user:new.html.twig', $form);
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends BaseController
             return $this->redirectAfterSuccess('fos_user_registration_confirmed');
         }
 
-        return $this->showView('@App/User/confirmed.html.twig', $form);
+        return $this->showView(':user:confirmed.html.twig', $form);
     }
 }
 
