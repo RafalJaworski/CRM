@@ -44,10 +44,12 @@
         {% block content_header %}
             <div class="col-md-12 content-header-wrapper">
                 <div class="col-md-4 location-name">
-                    {% if controller_action == 'new_user' %}
-                        <div class="content-header">{{ 'new user'|upper|trans({},'layout') }}</div>
-                    {% elseif controller_action == 'confirmed_user' %}
-                        <div class="content-header">{{ 'confirmed user'|upper|trans({},'layout') }}</div>
+                    {% set route = app.request.get('_route') %}
+
+                    {% if route == 'fos_user_registration_register' %}
+                        <div class="content-header">{{ 'new user'|upper|trans({},'user') }}</div>
+                    {% elseif route == 'fos_user_registration_confirmed' %}
+                        <div class="content-header">{{ 'confirmed user'|upper|trans({},'user') }}</div>
                     {% endif %}
                 </div>
 

@@ -3,22 +3,34 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Helper\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
 
 class BaseController extends Controller
 {
-    /**
-     *
-     * This function is to render view. The reason for creating this class is to hide logic and make the code clear
-     *
-     * @param $viewName
-     * @param $actionName
-     * @param FormInterface|null $form
-     * @param null $resource
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function showView($viewName, $actionName, FormInterface $form = null, $resources = null, $referer = null)
+    public function trans($phrase, $domain)
+    {
+        return $this->get('translator')->trans($phrase, [], $domain);
+    }
+
+    public function handleForm($form, $entity, $request)
+    {
+        $form = $this->createForm($form, $entity);
+        $form->handleRequest($request);
+
+        return $form;
+    }
+
+    public function redirectAfterSuccess($route)
+    {
+        $this->addFlash(Message::TYPE_SUCCESS, $this->get('translator')->trans(Message::MSG_SUCCESS));
+        
+        return $this->redirectToRoute($route);
+    }
+
+
+    public function showView($viewName, FormInterface $form = null, $resources = null, $referer = null)
     {
         if (null != $form) {
             $form = $form->createView();
@@ -26,7 +38,6 @@ class BaseController extends Controller
 
         return $this->render($viewName,
             [
-                'controller_action' => $actionName,
                 'resources' => $resources,
                 'referer' => $referer,
                 'form' => $form,

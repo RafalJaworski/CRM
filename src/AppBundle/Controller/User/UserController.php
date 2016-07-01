@@ -3,11 +3,9 @@
 namespace AppBundle\Controller\User;
 
 use AppBundle\Form\User\UserPasswordType;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\User\User;
 use AppBundle\Form\User\UserType;
-use AppBundle\Helper\Message;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
@@ -28,8 +26,7 @@ class UserController extends BaseController
         $dispatcher = $this->get('event_dispatcher');
 
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $form = $this->handleForm(UserType::class, $user, $request);
 
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
@@ -37,11 +34,10 @@ class UserController extends BaseController
             $user->setCreatedBy($this->getUser());
             $this->get('fos_user.user_manager')->updateUser($user);
 
-            $this->addFlash(Message::TYPE_SUCCESS, $this->get('translator')->trans(Message::MSG_SUCCESS));
-            return $this->redirectToRoute('fos_user_registration_register');
+            return $this->redirectAfterSuccess('fos_user_registration_register');
         }
 
-        return $this->showView('@App/User/new.html.twig', 'new_user', $form);
+        return $this->showView('@App/User/new.html.twig', $form);
     }
 
     /**
@@ -54,19 +50,17 @@ class UserController extends BaseController
     {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
+            throw $this->createAccessDeniedException($this->trans('user.access_denied', 'messages'));
         }
-        $form = $this->createForm(UserPasswordType::class, $user);
-        $form->handleRequest($request);
 
+        $form = $this->handleForm(UserPasswordType::class, $user, $request);
         if ($form->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($user);
 
-            $this->addFlash(Message::TYPE_SUCCESS, $this->get('translator')->trans(Message::MSG_SUCCESS));
-            return $this->redirectToRoute('fos_user_registration_confirmed');
+            return $this->redirectAfterSuccess('fos_user_registration_confirmed');
         }
 
-        return $this->showView('@App/User/confirmed.html.twig', 'confirmed_user', $form);
+        return $this->showView('@App/User/confirmed.html.twig', $form);
     }
 }
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\User;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -114,6 +115,13 @@ class User extends BaseUser
                 (str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
             }
         }
+    }
+
+    public function __construct()
+    {
+        //parent must be called because of salt exception
+        parent::__construct();
+        $this->createdUsers = new ArrayCollection();
     }
 
     /**
