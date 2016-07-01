@@ -2,4 +2,9 @@ new_password:
     error: 'These passwords are not similar !'
 
 new_user:
-    error: 'Wrong email format !'
+    format_error: 'Wrong email format !'
+    min_error_msg: 'First name is too short. At least {{ limit }} characters long'
+    max_error_msg: 'Your first name cannot be longer than {{ limit }} characters'
+    regex_error_msg: 'Your first name cannot contain numbers,spaces and special characters'
+    phone_error_msg: 'Only digits 0-9'
+

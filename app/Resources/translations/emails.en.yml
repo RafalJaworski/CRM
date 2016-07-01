@@ -7,14 +7,15 @@ registration:
         user_created: 'The user has been created successfully'
     email:
         subject: 'Registration email'
-        message: |
+        header: 'Hello %username%!'
+        content: 'To finish activating your account - please visit: '
+        regards: 'Regards,'
+        sign: 'The Team.'
 
-                Hello %username%!
-
-                To finish activating your account - please visit: %confirmationUrl%
 
 
-                Regards,
-                The Team.
+
+
+
 
 

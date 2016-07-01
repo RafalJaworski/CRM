@@ -6,7 +6,12 @@
 {% endblock %}
 {% block body_text %}
     {% autoescape false %}
-        {{ 'registration.email.message'|trans({'%username%': user.username,'%confirmationUrl%': confirmationUrl},'emails') }}
     {% endautoescape %}
 {% endblock %}
-{% block body_html %}{% endblock %}
+{% block body_html %}
+<p><b>{{ 'registration.email.header'|trans({'%username%': user.username},'emails') }}</b></p>
+<p>{{ 'registration.email.content'|trans({},'emails') }} <a href="{{ confirmationUrl }}">{{ confirmationUrl }}</a></p>
+<p>{{ 'registration.email.regards'|trans({},'emails') }}<br>
+{{ 'registration.email.sign'|trans({},'emails') }}</p>
+{% endblock %}
+

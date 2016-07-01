@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\User\UserRepository")
  */
@@ -30,12 +29,12 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 3,
      *      max = 15,
-     *      minMessage = "First name is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      minMessage = "new_user.min_error_msg",
+     *      maxMessage = "new_user.max_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="Your first name cannot contain numbers,spaces and special characters",
+     *     message="new_user.regex_error_msg",
      *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="first_name", type="string")
@@ -48,12 +47,12 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 4,
      *      max = 20,
-     *      minMessage = "Last name is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters",
+     *      minMessage = "new_user.min_error_msg",
+     *      maxMessage = "new_user.max_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="Your first name cannot contain numbers,spaces and special characters",
+     *     message="new_user.regex_error_msg",
      *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="last_name", type="string")
@@ -65,11 +64,11 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 7,
      *      max = 15,
-     *      minMessage = "Mobile is too short. At least {{ limit }} characters long",
-     *      maxMessage = "Mobile cannot be longer than {{ limit }} characters",
+     *      minMessage = "new_user.min_error_msg",
+     *      maxMessage = "new_user.max_error_msg",
      *      groups={"registration"})
      * @Assert\Regex(pattern="/^[0-9]*$/",
-     *      message="Only digits 0-9",
+     *      message="new_user.phone_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @ORM\Column(name="mobile", type="string", nullable=true)
      */
@@ -100,27 +99,22 @@ class User extends BaseUser
      */
     private $createdUsers;
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function preUpdate()
-    {
-        if ((null == $this->createdAt) and (null == $this->updatedAt)) {
-            $this->createdAt = new DateTime();
-            $this->updatedAt = new DateTime();
-
-            if (null == $this->plainPassword) {
-                $this->plainPassword = substr
-                (str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
-            }
-        }
-    }
-
     public function __construct()
     {
         //parent must be called because of salt exception
         parent::__construct();
         $this->createdUsers = new ArrayCollection();
+        if(null == $this->createdAt)
+            $this->createdAt = new DateTime();
+
+        if(null == $this->updatedAt)
+            $this->updatedAt = new DateTime();
+
+        if(null == $this->plainPassword) {
+            $this->plainPassword = substr
+            (str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+        }
+
     }
 
     /**
