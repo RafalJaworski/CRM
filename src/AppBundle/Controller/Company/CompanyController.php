@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Company;
 
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Company\Company;
+use AppBundle\Entity\User\User;
 use AppBundle\Form\Company\CompanyType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,6 +19,8 @@ class CompanyController extends BaseController
      */
     public function dashboardAction()
     {
+        $company = $this->getUser()->getCompany();
+        $this->denyAccessUnlessGranted(User::ROLE_ANYMAC_USER, $company, $this->trans('user.access_denied', 'messages'));
     }
 
     /**

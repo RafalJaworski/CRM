@@ -15,6 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
+    const ROLE_USER = 'ROLE_USER'; //customer user
+    const ROLE_ADMIN = 'ROLE_ADMIN'; //customer admin
+    const ROLE_ANYMAC_USER = 'ROLE_ANYMAC_USER';
+    const ROLE_ANYMAC_ADMIN = 'ROLE_ANYMAC_ADMIN';
+
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -135,7 +142,7 @@ class User extends BaseUser
         $this->createdCompanies = new ArrayCollection();
         $this->createdManufacturer = new ArrayCollection();
         $this->createdSuppliers = new ArrayCollection();
-        
+
 
         if (null == $this->createdAt)
             $this->createdAt = new DateTime();
