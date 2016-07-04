@@ -30,7 +30,7 @@ class BaseController extends Controller
     }
 
 
-    public function showView($viewName, FormInterface $form = null, $resources = null, $referer = null)
+    public function showView($viewName, FormInterface $form = null, $resources = null)
     {
         if (null != $form) {
             $form = $form->createView();
@@ -39,7 +39,6 @@ class BaseController extends Controller
         return $this->render($viewName,
             [
                 'resources' => $resources,
-                'referer' => $referer,
                 'form' => $form,
             ]);
     }

@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  *
  * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
- * @UniqueEntity("name")
+ * @UniqueEntity(fields={"name","VATnumber"})
  */
 class Company extends CompanySuperclass
 {

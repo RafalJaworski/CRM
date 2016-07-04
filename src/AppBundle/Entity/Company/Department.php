@@ -184,4 +184,3 @@ class Department
         return $this->companies;
     }
 }
-

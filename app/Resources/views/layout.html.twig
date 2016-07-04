@@ -52,6 +52,8 @@
                         <div class="content-header">{{ 'new_user.tab_name'|trans({},'user')|upper }}</div>
                     {% elseif route == 'fos_user_registration_confirmed' %}
                         <div class="content-header">{{ 'confirm_user.tab_name'|trans({},'user')|upper }}</div>
+                    {% elseif (route == 'new_company') or (route == 'save_company') %}
+                        <div class="content-header">{{ 'new_company.tab_name'|trans({},'company')|upper }}</div>
                     {% endif %}
                 </div>
                 {#======     END OF ACTUAL LOCATION    ====== #}

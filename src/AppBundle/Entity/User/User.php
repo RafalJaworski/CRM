@@ -110,12 +110,33 @@ class User extends BaseUser
      */
     private $createdCompanies;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company\Distributor", mappedBy="createdBy")
+     */
+    private $createdDistributors;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company\Manufacturer", mappedBy="createdBy")
+     */
+    private $createdManufacturer;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company\Supplier", mappedBy="createdBy")
+     */
+    private $createdSuppliers;
+
+
     public function __construct()
     {
         //parent must be called because of salt exception
         parent::__construct();
         $this->createdUsers = new ArrayCollection();
+        $this->createdDistributors = new ArrayCollection();
+        $this->createdCompanies = new ArrayCollection();
+        $this->createdManufacturer = new ArrayCollection();
+        $this->createdSuppliers = new ArrayCollection();
         
+
         if (null == $this->createdAt)
             $this->createdAt = new DateTime();
 
@@ -355,5 +376,104 @@ class User extends BaseUser
     public function getCreatedCompanies()
     {
         return $this->createdCompanies;
+    }
+
+    /**
+     * Add createdDistributors
+     *
+     * @param \AppBundle\Entity\Company\Company $createdDistributors
+     * @return User
+     */
+    public function addCreatedDistributor(\AppBundle\Entity\Company\Company $createdDistributors)
+    {
+        $this->createdDistributors[] = $createdDistributors;
+
+        return $this;
+    }
+
+    /**
+     * Remove createdDistributors
+     *
+     * @param \AppBundle\Entity\Company\Company $createdDistributors
+     */
+    public function removeCreatedDistributor(\AppBundle\Entity\Company\Company $createdDistributors)
+    {
+        $this->createdDistributors->removeElement($createdDistributors);
+    }
+
+    /**
+     * Get createdDistributors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCreatedDistributors()
+    {
+        return $this->createdDistributors;
+    }
+
+    /**
+     * Add createdManufacturer
+     *
+     * @param \AppBundle\Entity\Company\Manufacturer $createdManufacturer
+     * @return User
+     */
+    public function addCreatedManufacturer(\AppBundle\Entity\Company\Manufacturer $createdManufacturer)
+    {
+        $this->createdManufacturer[] = $createdManufacturer;
+
+        return $this;
+    }
+
+    /**
+     * Remove createdManufacturer
+     *
+     * @param \AppBundle\Entity\Company\Manufacturer $createdManufacturer
+     */
+    public function removeCreatedManufacturer(\AppBundle\Entity\Company\Manufacturer $createdManufacturer)
+    {
+        $this->createdManufacturer->removeElement($createdManufacturer);
+    }
+
+    /**
+     * Get createdManufacturer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCreatedManufacturer()
+    {
+        return $this->createdManufacturer;
+    }
+
+    /**
+     * Add createdSuppliers
+     *
+     * @param \AppBundle\Entity\Company\Supplier $createdSuppliers
+     * @return User
+     */
+    public function addCreatedSupplier(\AppBundle\Entity\Company\Supplier $createdSuppliers)
+    {
+        $this->createdSuppliers[] = $createdSuppliers;
+
+        return $this;
+    }
+
+    /**
+     * Remove createdSuppliers
+     *
+     * @param \AppBundle\Entity\Company\Supplier $createdSuppliers
+     */
+    public function removeCreatedSupplier(\AppBundle\Entity\Company\Supplier $createdSuppliers)
+    {
+        $this->createdSuppliers->removeElement($createdSuppliers);
+    }
+
+    /**
+     * Get createdSuppliers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCreatedSuppliers()
+    {
+        return $this->createdSuppliers;
     }
 }

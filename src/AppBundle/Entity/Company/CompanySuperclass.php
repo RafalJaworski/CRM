@@ -2,12 +2,14 @@
 
 namespace AppBundle\Entity\Company;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\MappedSuperclass
+ * @ORM\HasLifecycleCallbacks
  */
 class CompanySuperclass
 {
@@ -133,7 +135,26 @@ class CompanySuperclass
      *
      * @ORM\Column(name="vat_number", type="string", length=20, unique=true)
      */
-    private $VATumber;
+    private $VATnumber;
+
+    /**
+     * @var int
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 15,
+     *      minMessage = "assert.min_error_msg",
+     *      maxMessage = "assert.max_error_msg",
+     *      groups={"NoPasswordRegistration"})
+     *
+     * @Assert\Regex(
+     *     pattern="/^[0-9]*$/",
+     *     message="assert.phone_error_msg")
+     *
+     * @ORM\Column(name="telephone", type="string", length=20)
+     */
+    private $telephone;
 
     /**
      * @var string
@@ -161,6 +182,20 @@ class CompanySuperclass
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpdate()
+    {
+
+        if (null == $this->createdAt) {
+            $this->createdAt = new DateTime();
+            $this->updatedAt = new DateTime();
+        }
+    }
+
 
     /**
      * Set name
@@ -347,26 +382,42 @@ class CompanySuperclass
     }
 
     /**
-     * Set VATumber
+     * Set VATnumber
      *
-     * @param string $vATumber
+     * @param string $vATnumber
      * @return CompanySuperclass
      */
-    public function setVATumber($vATumber)
+    public function setVATnumber($vATnumber)
     {
-        $this->VATumber = $vATumber;
+        $this->VATnumber = $vATnumber;
 
         return $this;
     }
 
     /**
-     * Get VATumber
+     * Get VATnumber
      *
      * @return string
      */
-    public function getVATumber()
+    public function getVATnumber()
     {
-        return $this->VATumber;
+        return $this->VATnumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param mixed $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
     }
 
     /**
@@ -461,4 +512,3 @@ class CompanySuperclass
         return $this->slug;
     }
 }
-

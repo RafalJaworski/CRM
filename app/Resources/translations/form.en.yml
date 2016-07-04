@@ -22,3 +22,18 @@ new_user:
         email: 'Email'
         mobile: 'Mobile'
         submit: 'Create User'
+
+new_company:
+    label:
+        name: 'Name'
+        dba_name: 'DBA name'
+        description: 'Description'
+        address: 'Address'
+        address2: 'Address line 2 ( optional )'
+        telephone: 'Telephone'
+        zip: 'Zip'
+        city: 'City'
+        country: 'Country'
+        vat: 'VAT'
+        note: 'Note'
+        submit: 'Create Company'

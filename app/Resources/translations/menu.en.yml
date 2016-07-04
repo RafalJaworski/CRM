@@ -13,4 +13,5 @@ user_menu:
     settings:
         settings: 'Settings'
         users: 'Users'
+        new_company: 'New Company'
     logout: 'Log Out'

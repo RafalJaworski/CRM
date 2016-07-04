@@ -29,7 +29,7 @@ class UserType extends AbstractType
                     'label' => 'new_user.label.submit',
                     'attr' =>
                         [
-                            'class' => 'btn custom-btn mtop20 pull-right'
+                            'class' => 'btn custom-btn pull-right'
                         ]
                 ]);
 

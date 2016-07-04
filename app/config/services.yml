@@ -1,9 +1,4 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    company_manager:
+        class: AppBundle\Doctrine\Company\CompanyManager
+        arguments: ["@doctrine.orm.entity_manager",'@security.token_storage']

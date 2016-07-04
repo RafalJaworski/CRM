@@ -33,6 +33,7 @@
         <a href="#"><span class="fa fa-gear fa-lg menu-fa"></span> {{ 'user_menu.settings.settings'|trans({},'menu') }} </a>
     </li>
     <ul class="sub-menu collapse {% if 'settings' in route %}in{% endif %}" id="settings">
+        <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.settings.new_company'|trans({},'menu') }} </a></li>
         <li><a class="{% if route == '' %}active{% endif %}" href="#">{{ 'user_menu.settings.users'|trans({},'menu') }} </a></li>
     </ul>
 

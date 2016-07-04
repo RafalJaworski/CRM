@@ -37,7 +37,7 @@ class UserPasswordType extends AbstractType
             ->add('submit', SubmitType::class,
                 [
                     'label' => 'new_password.label.submit',
-                    'attr' => ['class' => 'btn custom-btn mtop20 pull-right']
+                    'attr' => ['class' => 'btn custom-btn pull-right']
                 ]);
 
     }
