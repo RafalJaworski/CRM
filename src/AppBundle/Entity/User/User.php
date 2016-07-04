@@ -29,12 +29,12 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 3,
      *      max = 15,
-     *      minMessage = "new_user.min_error_msg",
-     *      maxMessage = "new_user.max_error_msg",
+     *      minMessage = "assert.min_error_msg",
+     *      maxMessage = "assert.max_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="new_user.regex_error_msg",
+     *     message="assert.regex_error_msg",
      *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="first_name", type="string")
@@ -47,12 +47,12 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 4,
      *      max = 20,
-     *      minMessage = "new_user.min_error_msg",
-     *      maxMessage = "new_user.max_error_msg",
+     *      minMessage = "assert.min_error_msg",
+     *      maxMessage = "assert.max_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @Assert\Regex(
      *     pattern="/^[A-Za-z]*$/",
-     *     message="new_user.regex_error_msg",
+     *     message="assert.regex_error_msg",
      *     groups={"NoPasswordRegistration"})
      *
      * @ORM\Column(name="last_name", type="string")
@@ -64,11 +64,11 @@ class User extends BaseUser
      * @Assert\Length(
      *      min = 7,
      *      max = 15,
-     *      minMessage = "new_user.min_error_msg",
-     *      maxMessage = "new_user.max_error_msg",
+     *      minMessage = "assert.min_error_msg",
+     *      maxMessage = "assert.max_error_msg",
      *      groups={"registration"})
      * @Assert\Regex(pattern="/^[0-9]*$/",
-     *      message="new_user.phone_error_msg",
+     *      message="assert.phone_error_msg",
      *      groups={"NoPasswordRegistration"})
      * @ORM\Column(name="mobile", type="string", nullable=true)
      */
@@ -99,18 +99,30 @@ class User extends BaseUser
      */
     private $createdUsers;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company\Company", inversedBy="employees")
+     * @ORM\JoinColumn(name="employer_id", referencedColumnName="id")
+     */
+    private $company;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company\Company", mappedBy="createdBy")
+     */
+    private $createdCompanies;
+
     public function __construct()
     {
         //parent must be called because of salt exception
         parent::__construct();
         $this->createdUsers = new ArrayCollection();
-        if(null == $this->createdAt)
+        
+        if (null == $this->createdAt)
             $this->createdAt = new DateTime();
 
-        if(null == $this->updatedAt)
+        if (null == $this->updatedAt)
             $this->updatedAt = new DateTime();
 
-        if(null == $this->plainPassword) {
+        if (null == $this->plainPassword) {
             $this->plainPassword = substr
             (str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
         }
@@ -288,5 +300,60 @@ class User extends BaseUser
     {
         return $this->createdUsers;
     }
-}
 
+    /**
+     * Set company
+     *
+     * @param \AppBundle\Entity\Company\Company $company
+     * @return User
+     */
+    public function setCompany(\AppBundle\Entity\Company\Company $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \AppBundle\Entity\Company\Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Add createdCompanies
+     *
+     * @param \AppBundle\Entity\Company\Company $createdCompanies
+     * @return User
+     */
+    public function addCreatedCompany(\AppBundle\Entity\Company\Company $createdCompanies)
+    {
+        $this->createdCompanies[] = $createdCompanies;
+
+        return $this;
+    }
+
+    /**
+     * Remove createdCompanies
+     *
+     * @param \AppBundle\Entity\Company\Company $createdCompanies
+     */
+    public function removeCreatedCompany(\AppBundle\Entity\Company\Company $createdCompanies)
+    {
+        $this->createdCompanies->removeElement($createdCompanies);
+    }
+
+    /**
+     * Get createdCompanies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCreatedCompanies()
+    {
+        return $this->createdCompanies;
+    }
+}

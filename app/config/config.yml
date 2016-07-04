@@ -87,3 +87,10 @@ fos_user:
                     sender_name: Anything CRM System
                 template: AppBundle:User\Email:registration.html.twig
                 enabled: true
+
+stof_doctrine_extensions:
+    default_locale: en
+    translation_fallback: true
+    orm:
+        default:
+            sluggable: true
