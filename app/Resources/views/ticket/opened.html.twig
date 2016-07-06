@@ -1,0 +1,70 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ 'opened_list.tab_name'|trans({},'ticket') }}{% endblock %}
+{% block body %}
+    {% if resources is not empty %}
+        <div class="container-fluid">
+            <div class="row centered">
+                <div class="col-md-5">
+                    <div class="row list-filter">
+                        <input id="filter" class="form-control" data-ajax-search="#"
+                               placeholder="{{ 'FILTER: TYPE TITLE OR DESCRIPTION'|trans({},'ticket') }}">
+                    </div>
+                    <div class="row">
+                        {% include ':ticket:list.html.twig' with { 'tickets':resources } %}
+                    </div>
+                </div>
+                <div class="col-md-1 list-gap">lnsalkdn</div>
+               <div class="show-container-wrapper col-md-5">
+                   <div class="show-container col-md-12"  style="display: none;">
+                       <div class="show-details">
+
+                       </div>
+                       {#{% include ':ticket:show.html.twig' with {} %}#}
+                   </div>
+               </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{#<div class="col-md-12">#}
+    {#<div class="left-container col-md-5 col-md-push-6" style="background-color: white;height: 110px;">#}
+        {#<div class="internal-container col-md-12">#}
+            {#<div class="row filter-input mtop20">#}
+                {#<label class="col-md-1" for="product-filter">{{ 'Filter: '|trans({},'ticket') }}</label>#}
+                {#<div class="col-md-7">#}
+                    {#{% if controller_action == 'tickets_list' %}#}
+                        {#{% if (is_granted('ROLE_ANYMAC_ADMIN')) or is_granted('ROLE_ANYMAC_STAFF') %}#}
+
+                        {#{% else %}#}
+                            {#<input id="filter" class="form-control"#}
+                                   {#data-ajax-search="{{ path('ticket_unresolved_search') }}"#}
+                                   {#placeholder="{{ 'TICKET TITLE OR DESCRIPTION'|trans({},'employees') }}">#}
+                        {#{% endif %}#}
+                    {#{% elseif controller_action == 'unresolved_created' %}#}
+                        {#<input id="filter" class="form-control"#}
+                               {#data-ajax-search="{{ path('ticket_unresolved_created_search') }}"#}
+                               {#placeholder="{{ 'TICKET TITLE OR DESCRIPTION'|trans({},'employees') }}">#}
+                    {#{% elseif controller_action == 'unresolved_assigned' %}#}
+                        {#<input id="filter" class="form-control"#}
+                               {#data-ajax-search="{{ path('ticket_search_assigned_to') }}"#}
+                               {#placeholder="{{ 'TICKET TITLE OR DESCRIPTION'|trans({},'employees') }}">#}
+                    {#{% endif %}#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row ajax-list ptop15">#}
+                {#{% include 'TicketBundle:Ticket:list.html.twig' with {'tickets':tickets , 'controller_action':controller_action } %}#}
+            {#</div>#}
+        {#</div>#}
+        {#show#}
+    {#</div>#}
+    {#<div class="col-md-1" style="background-color: red; height: 80px;">dsdsvvsd</div>#}
+    {#<div class="right-container col-md-5 col-md-pull-6" style="background-color: yellow; height: 10%;">#}
+        {#<div class="internal-container col-md-12">#}
+            {#<div class="details">#}
+                {#{% include 'TicketBundle:Ticket:show.html.twig' with {'ticket': firstToShow } %}#}
+            {#</div>#}
+        {#</div>#}
+        {#sdnckjsdnc#}
+    {#</div>#}
+{#</div>#}

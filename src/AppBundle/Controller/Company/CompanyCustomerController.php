@@ -15,11 +15,11 @@ class CompanyCustomerController extends BaseController
      *
      * @Route("/customer/{slug}/admin", name="customer_admin_dashboard")
      * /**
-     * @ParamConverter("company", class="CompanyBundle:Company", options={"mapping": {"slug": "slug"}})
+     * @ParamConverter("company", class="AppBundle\Company\Company", options={"mapping": {"slug": "slug"}})
      */
     public function adminDashboardAction(Company $company)
     {
-        $this->denyAccessUnlessGranted(User::ROLE_ADMIN, $company, $this->trans('user.access_denied', 'messages'));
+        $this->denyAccessUnlessGranted(User::ROLE_ADMIN, $company, $this->trans('user_access.controller.denied', 'messages'));
     }
 
     /**

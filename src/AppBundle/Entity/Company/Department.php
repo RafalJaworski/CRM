@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Department
  *
  * @ORM\Table(name="department")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DepartmentRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Company\DepartmentRepository")
  */
 class Department
 {
@@ -184,3 +184,4 @@ class Department
         return $this->companies;
     }
 }
+

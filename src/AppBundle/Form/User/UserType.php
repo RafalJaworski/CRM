@@ -4,6 +4,7 @@ namespace AppBundle\Form\User;
 
 use AppBundle\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,6 +21,18 @@ class UserType extends AbstractType
             ->add('lastName', TextType::class, ['label' => 'new_user.label.lastname'])
             ->add('username', TextType::class, ['label' => 'new_user.label.username'])
             ->add('email', EmailType::class, ['label' => 'new_user.label.email'])
+            ->add('roles',ChoiceType::class,
+                [
+                    'choices' =>
+                    [
+                        User::ROLE_USER => User::ROLE_USER,
+                        User::ROLE_ADMIN => User::ROLE_ADMIN,
+                        User::ROLE_ANYMAC_USER => User::ROLE_ANYMAC_USER,
+                        User::ROLE_ANYMAC_ADMIN => User::ROLE_ANYMAC_ADMIN
+                    ],
+                    'multiple' => true,
+
+                ])
             ->add('mobile', TextType::class,
                 [
                     'label' => 'new_user.label.mobile', 'required' => false

@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  * Company
  *
  * @ORM\Table(name="company")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CompanyRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Company\CompanyRepository")
  * @UniqueEntity(fields={"name","VATnumber"})
  */
 class Company extends CompanySuperclass
@@ -41,12 +41,18 @@ class Company extends CompanySuperclass
     private $departments;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket\Ticket", mappedBy="company")
+     */
+    private $tickets;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->employees = new \Doctrine\Common\Collections\ArrayCollection();
         $this->departments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -146,6 +152,39 @@ class Company extends CompanySuperclass
     public function getDepartments()
     {
         return $this->departments;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $tickets
+     * @return Company
+     */
+    public function addTicket(\AppBundle\Entity\Ticket\Ticket $tickets)
+    {
+        $this->tickets[] = $tickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove tickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $tickets
+     */
+    public function removeTicket(\AppBundle\Entity\Ticket\Ticket $tickets)
+    {
+        $this->tickets->removeElement($tickets);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }
 

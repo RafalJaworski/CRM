@@ -1,4 +1,13 @@
-user:
-    access_denied: 'This user does not have access to this section.'
+user_access:
+    controller:
+        denied: 'This user does not have access to this section.'
+
+flash:
+    message_success: 'Successfully saved!'
+    message_exists: 'Sorry! Changes has not been saved. This entry exists!'
+    message_not_exist: 'Sorry! Resource does not exist'
+    message_empty: 'Sorry! Nothing to show!'
+    message_failure: 'Changes has not be saved'
+
 
 

@@ -25,7 +25,8 @@ class CompanyType extends AbstractType
             ->add('city', TextType::class, ['label' => 'new_company.label.city'])
             ->add('country', TextType::class, ['label' => 'new_company.label.country'])
             ->add('VATnumber', TextType::class, ['label' => 'new_company.label.vat'])
-            ->add('note', TextareaType::class, ['label' => 'new_company.label.note', 'attr' => ['rows' => 5], 'required' => false])
+            ->add('note', TextareaType::class,
+                ['label' => 'new_company.label.note', 'attr' => ['rows' => 5], 'required' => false])
             ->add('submit', SubmitType::class,
                 [
                     'label' => 'new_company.label.submit',
@@ -38,11 +39,7 @@ class CompanyType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            [
-                'data_class' => Company::class,
-                'translation_domain' => 'form'
-            ]);
+        $resolver->setDefaults(['data_class' => Company::class, 'translation_domain' => 'form']);
     }
 }
 

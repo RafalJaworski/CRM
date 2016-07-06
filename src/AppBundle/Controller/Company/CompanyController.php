@@ -6,6 +6,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Company\Company;
 use AppBundle\Entity\User\User;
 use AppBundle\Form\Company\CompanyType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -20,7 +21,7 @@ class CompanyController extends BaseController
     public function dashboardAction()
     {
         $company = $this->getUser()->getCompany();
-        $this->denyAccessUnlessGranted(User::ROLE_ANYMAC_USER, $company, $this->trans('user.access_denied', 'messages'));
+        $this->denyAccessUnlessGranted(User::ROLE_ANYMAC_USER, $company, $this->trans('user_access.controller.denied', 'messages'));
     }
 
     /**
@@ -47,6 +48,24 @@ class CompanyController extends BaseController
         }
 
         return $this->showView('company/new.html.twig', $form);
+    }
+
+    /**
+     *
+     * EMPLOYEES OF COMPANY USER IN NEW TICKET FORM (only for anymac staff)
+     *
+     * @Route("/compamy/users", name="company_users")
+     */
+    public function usersAction(Request $request)
+    {
+        $companyId = $request->request->get('companyId');
+        $company = $this->getDoctrine()->getRepository(Company::class)->find($companyId);
+        
+        if($this->isPost($request)){
+            $users = $this->getDoctrine()->getRepository(User::class)->companyUsersArray($company);
+
+            return new JsonResponse(['users' => $users]);
+        }
     }
 }
 

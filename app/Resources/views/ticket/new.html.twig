@@ -1,0 +1,9 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ 'new_ticket.tab_name'|trans({},'ticket') }}{% endblock %}
+{% block body %}
+    <div class="col-md-4 ">
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form(form,{'action': path('save_ticket'),'attr':{'novalidate':'novalidate'}}) }}
+    </div>
+{% endblock %}

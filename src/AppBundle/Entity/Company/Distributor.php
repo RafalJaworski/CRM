@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="distributor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\User\DistributorRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Company\DistributorRepository")
  */
 class Distributor extends CompanySuperclass
 {

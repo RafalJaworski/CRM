@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets
@@ -47,14 +48,23 @@
                 {#======     ACTUAL LOCATION    ====== #}
                 <div class="col-md-4 location-name">
                     {% set route = app.request.get('_route') %}
+                    <div class="content-header">{{ company.name|upper ~ ' / '}}
+                        {% if route == 'fos_user_registration_register' %}
+                            {{ 'new_user.tab_name'|trans({},'user')|upper }}
 
-                    {% if route == 'fos_user_registration_register' %}
-                        <div class="content-header">{{ 'new_user.tab_name'|trans({},'user')|upper }}</div>
-                    {% elseif route == 'fos_user_registration_confirmed' %}
-                        <div class="content-header">{{ 'confirm_user.tab_name'|trans({},'user')|upper }}</div>
-                    {% elseif (route == 'new_company') or (route == 'save_company') %}
-                        <div class="content-header">{{ 'new_company.tab_name'|trans({},'company')|upper }}</div>
-                    {% endif %}
+                        {% elseif route == 'fos_user_registration_confirmed' %}
+                            {{ 'confirm_user.tab_name'|trans({},'user')|upper }}
+
+                        {% elseif (route == 'new_company') or (route == 'save_company') %}
+                            {{ 'new_company.tab_name'|trans({},'company')|upper }}
+
+                        {% elseif (route == 'new_ticket') or (route == 'save_ticket') %}
+                            {{ 'new_ticket.tab_name'|trans({},'ticket')|upper }}
+
+                        {% elseif (route == 'all_opened_tickets') %}
+                            {{ 'opened_list.tab_name'|trans({},'ticket')|upper }}
+                        {% endif %}
+                    </div>
                 </div>
                 {#======     END OF ACTUAL LOCATION    ====== #}
 
@@ -79,7 +89,10 @@
                  {#======     END OF FLASH MESSAGES    ====== #}
             </div>
         {% endblock %}
-        {% block body %}{% endblock %}
+            <div class="col-md-12 content-wrapper">
+                {% block body %}{% endblock %}
+            </div>
+
     </div>
 </div>
 

@@ -2,10 +2,8 @@
 
 {% block title %}{{ 'new_company.tab_name'|trans({},'company') }}{% endblock %}
 {% block body %}
-    <div class="col-md-12 content-wrapper">
-        <div class="col-md-4 ">
-            {% form_theme form 'bootstrap_3_layout.html.twig' %}
-            {{ form(form,{'action': path('save_company'),'attr':{'novalidate':'novalidate'}}) }}
-        </div>
+    <div class="col-md-4 ">
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form(form,{'action': path('save_company')}) }}
     </div>
 {% endblock %}

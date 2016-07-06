@@ -2,3 +2,13 @@ services:
     company_manager:
         class: AppBundle\Doctrine\Company\CompanyManager
         arguments: ["@doctrine.orm.entity_manager",'@security.token_storage']
+
+    ticket_manager:
+        class: AppBundle\Doctrine\Ticket\TicketManager
+        arguments: ["@doctrine.orm.entity_manager",'@security.token_storage']
+
+    ticket_form:
+        class: AppBundle\Form\Ticket\TicketType
+        arguments: ['@security.authorization_checker','@router']
+        tags:
+            - { name: form.type }

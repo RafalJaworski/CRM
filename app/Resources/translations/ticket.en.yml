@@ -1,0 +1,28 @@
+new_ticket:
+    tab_name: 'New Ticket'
+
+opened_list:
+    tab_name: 'All Opened'
+
+show:
+    buttons:
+        take: 'Take a ticket'
+        done: 'Make it done'
+        assign: 'Assign to User'
+        undo: 'Undo assign'
+        add: 'Add'
+    details:
+        description: 'Description: '
+        priority: 'Priority: '
+        time_spent: 'Time spent: '
+        company: 'Company: '
+        minutes: 'Minutes'
+        created_by: 'Created by: '
+        assigned_to: 'Assigned to: '
+        resolved_by: 'Resolved by: '
+        resolved_at: 'Resolved at: '
+        created_at: 'Resolved at: '
+        comments: 'Comments: '
+        priority_low: 'LOW'
+        priority_medium: 'MEDIUM'
+        priority_high: 'HIGH'

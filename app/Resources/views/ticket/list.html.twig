@@ -1,0 +1,32 @@
+{% for ticket in tickets %}
+    {% if ticket.priority == 0 %}
+        {% set color = "color: green;" %}
+    {% elseif ticket.priority == 1 %}
+        {% set color = "color: orange;" %}
+    {% elseif ticket.priority == 2 %}
+        {% set color = "color: red;" %}
+    {% endif %}
+    <a href="#" class="list-link" data-ajax-entity="{{ path('show_ticket',{'id':ticket.id, 'slug' :company.slug}) }}">
+        <div class="list-element col-md-12 col-sm-12 col-xs-12"
+             style="{{ color }}">
+            <div class="col-md-12 col-sm-12">
+                <div class="pull-left row list-first-line">
+                    <span class="list-company-name">{{ ticket.company.name|upper ~ ': ' }}</span>
+                    <span>{{ ticket.name }}</span>
+                </div>
+                <div class="pull-right row list-first-line">
+                    {% if ticket.assignedTo != null %}
+                        {{ 'Assigned to: '|trans({},'ticket') }}{{ ticket.assignedTo }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="pull-left row list-first-line">
+                   <span>{{ 'Created: '|trans({},'ticket') }}
+                       {{ ticket.createdAt|date('d/m-Y H:i:s') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </a>
+{% endfor %}

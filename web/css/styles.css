@@ -24,6 +24,16 @@ textarea {
     resize: none;
     overflow: hidden;
 }
+.custom-btn-sm {
+    border: 1px solid white;
+    color: white;
+    font-size: 12px;
+}
+.custom-btn-sm:hover,
+.custom-btn-sm:focus,
+.custom-btn-sm:active{
+    color:white;
+}
 /*======     END OF GENERAL STYLES      ======*/
 
 /*======     LAYOUT STYLES      ======*/
@@ -87,6 +97,69 @@ textarea {
 .content-wrapper{
     padding-top: 30px;
 }
+/*LIST*/
+.list-element{
+    background-color: white;
+    border: 1px solid #364252;
+    border-radius: 8px;
+    padding: 9px;
+    margin-bottom: 5px;
+}
+.list-company-name{
+    color: #34495E;
+}
+.list-filter{
+    margin-bottom: 20px;
+}
+/*END OF LIST*/
+
+/*SHOW*/
+.show-container{
+    background-color: white;
+    border: 1px solid #364252;
+    border-radius: 8px;
+    line-height: 25px;
+}
+.show-container-buttons{
+    line-height: 37px;
+    text-align: right;
+}
+
+.show-container-header{
+    background-color: #364252;
+    color:white;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.show-container-comments{
+    background-color: #364252;
+    color:white;
+    padding: 7px 0;
+    margin-top: 10px;
+}
+.btn-txt-to-hide-undo{
+    display: none;
+}
+.btn-txt-to-hide-done{
+    display: none;
+}
+.btn-txt-to-hide-assign{
+    display: none;
+}
+.show-thumbnail{
+    border: 1px solid #364252;
+    border-radius: 8px;
+    width:80px;
+    height: 100px;
+}
+.show-container-thumbnail,
+.show-container-comments-btn{
+    padding-right: 0;
+}
+.btn-undo{
+    margin-right: 0 !important;
+}
+/*END OF SHOW*/
 /*======     END OF CONTENT      ======*/
 
 /*======     SIDE MENU    ======*/
@@ -256,8 +329,99 @@ textarea {
 }
 
 /*======     MEDIA    ======*/
+@media (min-width: 320px) and (max-width: 359px){
+    /* GENERAL */
+    .custom-btn-sm{
+        margin-right: 4px;
+    }
+    /* END OF GENERAL */
+}
+
+@media (min-width: 360px) and (max-width: 639px) {
+    /* GENERAL */
+    .custom-btn-sm {
+        margin-right: 17px;
+    }
+    /* END OF GENERAL */
+
+    /* SHOW */
+    .show-container-comments-btn{
+        padding-right: 0;
+    }
+    /* END SHOW */
+
+}
+@media (min-width: 633px) and (max-width: 640px){
+    /* SHOW */
+    .btn-txt-to-hide-done{
+        display: inline-block;
+    }
+    .btn-txt-to-hide-assign{
+        display: inline-block;
+    }
+    .btn-txt-to-hide-undo{
+        display: inline-block;
+    }
+    .show-container-buttons{
+        margin: 0px auto;
+        padding: 0px;
+        width: 100%;
+        text-align: center;
+    }
+    /* END OF SHOW*/
+
+    /* GENERAL */
+    .custom-btn-sm{
+        margin-right: 15px;
+    }
+    /* END OF GENERAL */
+}
+@media (max-width: 640px) {
+    /* LIST */
+    .list-first-line{
+        float: none !important;
+    }
+    /* END OF LIST */
+
+    /* SHOW */
+    .btn-txt-to-hide{
+        display: inline-block !important;
+    }
+
+    .show-container-buttons{
+        margin: 0px auto;
+        padding: 0px;
+        width: 100%;
+        text-align: center;
+    }
+    .btn-txt-to-hide-comment{
+        display: none;
+    }
+    /* END OF SHOW */
+}
+@media (max-width: 980px){
+    /* SHOW */
+    .show-container-comments-header
+    {
+        width: 50%;
+        float:left;
+        line-height: 37px;
+    }
+    .show-container-comments-btn{
+        width: 50%;
+        float: right;
+        line-height: 37px;
+    }
+    .show-container-comments{
+        background-color: #364252;
+        color:white;
+        margin-top: 10px;
+        padding-top: 7px;
+        padding-bottom: 0px;
+    }none/* END OF SHOW */
+}
 @media (max-width: 767px) {
-    /*menu*/
+    /* MENU */
     .nav-side-menu {
         position: relative;
         width: 100%;
@@ -296,9 +460,9 @@ textarea {
     .nav-side-menu li{
         font-size: medium;
     }
-    /*end of menu*/
+    /* END OF MENU */
 
-    /*layout*/
+    /* LAYOUT */
     .top-banner{
         height: 40px;
     }
@@ -317,47 +481,116 @@ textarea {
     .content-header-wrapper{
         padding-bottom: 10px;
     }
-    /*end of layout*/
+    /* END OF LAYOUT */
 
-    /*content*/
+    /* CONTENT */
     .main-wrapper{
         margin-left: 0px;
     }
-    /*end of content*/
+    /* END OF CONTENT */
 }
 @media (min-width: 767px) and  (max-width: 980px){
-    /*layout*/
+    /* LAYOUT */
     .top-belt-logo{
         top: 3px;
         left: 192px;
         font-size: 17px
     }
-    /* end of layout*/
+    /* END OF LAYOUT */
+
+    /* SHOW */
+    .show-container-name{
+        width: 45%;
+        float:left;
+    }
+    .show-container-buttons{
+        width: 45%;
+        float: right;
+    }
+    .btn-txt-to-hide{
+        display: none;
+    }
+    .btn-txt-to-hide-undo{
+        display: none;
+    }
+    /* END OF SHOW */
+
+    /* GENERAL */
+    .custom-btn-sm{
+        margin-right: 0 ;
+    }
+    /* END OF GENERAL */
 }
 @media (min-width: 981px) and  (max-width: 1439px){
-    /*layout*/
+    /* LAYOUT */
     .top-belt-logo{
         top: 8px;
         left: 192px;
         font-size: 19px;
     }
-    /*end of layout*/
+    /* LAYOUT */
+}
+
+@media (min-width: 1279px ) {
+    /* LIST */
+    .centered {
+        text-align: center;
+        font-size: 0;
+    }
+    .centered > div {
+        float: none;
+        display: inline-block;
+        text-align: left;
+        font-size: 13px;
+        vertical-align: top;
+    }
+    /*END OF LIST*/
 }
 @media (min-width: 1440px) and  (max-width: 2160px) {
-    /*layout*/
+    /* LAYOUOT */
     .top-belt-logo{
         top: 14px;
         left: 177px;
         font-size: 25px;
     }
-    /*end of layout*/
+    /* END OF LAYOUT */
 }
 @media (min-width: 767px) {
-    /*menu*/
+    /* MENU */
     .nav-side-menu .menu-list .menu-content {
         display: block;
     }
-    /*end of menu*/
+    /* END OF MENU */
+}
+@media (max-width: 1699px){
+    /* SHOW */
+    .btn-txt-to-hide{
+        display: none;
+    }
+    /* END OF SHOW */
+}
+@media (min-width: 981px) and (max-width: 1280px){
+    /* SHOW */
+    .show-container-buttons{
+        width:100%;
+        text-align: left;
+        margin: 0 auto;
+        padding: 0;
+        float:left !important;
+    }
+    .btn-txt-to-hide{
+        display: inline-block;
+    }
+    .btn-txt-to-hide-undo{
+        display: inline-block;
+    }
+    /* END OF SHOW */
+
+    /* GENERAL */
+    .custom-btn-sm{
+        margin-right: 24px;
+    }
+    /* END OF GENERAL */
 }
 /*======     END OF MEDIA    ======*/
 

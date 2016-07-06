@@ -113,6 +113,12 @@ class User extends BaseUser
     private $company;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Company\Department", inversedBy="users")
+     * @ORM\JoinTable(name="users_departments")
+     */
+    private $departments;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company\Company", mappedBy="createdBy")
      */
     private $createdCompanies;
@@ -132,6 +138,21 @@ class User extends BaseUser
      */
     private $createdSuppliers;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket\Ticket", mappedBy="createdBy")
+     */
+    private $createdTickets;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket\Ticket", mappedBy="assignedTo")
+     */
+    private $assignedTickets;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket\Ticket", mappedBy="resolvedBy")
+     */
+    private $resolvedTickets;
+
 
     public function __construct()
     {
@@ -142,8 +163,11 @@ class User extends BaseUser
         $this->createdCompanies = new ArrayCollection();
         $this->createdManufacturer = new ArrayCollection();
         $this->createdSuppliers = new ArrayCollection();
-
-
+        $this->createdTickets = new ArrayCollection();
+        $this->assignedTickets = new ArrayCollection();
+        $this->resolvedTickets = new ArrayCollection();
+        $this->departments = new ArrayCollection();
+        
         if (null == $this->createdAt)
             $this->createdAt = new DateTime();
 
@@ -157,6 +181,31 @@ class User extends BaseUser
 
     }
 
+    public function __toString()
+    {
+        return $this->getFullname();
+    }
+
+    public function getFullname()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    
     /**
      * Set firstName
      *
@@ -483,4 +532,137 @@ class User extends BaseUser
     {
         return $this->createdSuppliers;
     }
+
+    /**
+     * Add createdTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $createdTickets
+     * @return User
+     */
+    public function addCreatedTicket(\AppBundle\Entity\Ticket\Ticket $createdTickets)
+    {
+        $this->createdTickets[] = $createdTickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove createdTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $createdTickets
+     */
+    public function removeCreatedTicket(\AppBundle\Entity\Ticket\Ticket $createdTickets)
+    {
+        $this->createdTickets->removeElement($createdTickets);
+    }
+
+    /**
+     * Get createdTickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCreatedTickets()
+    {
+        return $this->createdTickets;
+    }
+
+    /**
+     * Add assignedTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $assignedTickets
+     * @return User
+     */
+    public function addAssignedTicket(\AppBundle\Entity\Ticket\Ticket $assignedTickets)
+    {
+        $this->assignedTickets[] = $assignedTickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove assignedTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $assignedTickets
+     */
+    public function removeAssignedTicket(\AppBundle\Entity\Ticket\Ticket $assignedTickets)
+    {
+        $this->assignedTickets->removeElement($assignedTickets);
+    }
+
+    /**
+     * Get assignedTickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssignedTickets()
+    {
+        return $this->assignedTickets;
+    }
+
+    /**
+     * Add resolvedTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $resolvedTickets
+     * @return User
+     */
+    public function addResolvedTicket(\AppBundle\Entity\Ticket\Ticket $resolvedTickets)
+    {
+        $this->resolvedTickets[] = $resolvedTickets;
+
+        return $this;
+    }
+
+    /**
+     * Remove resolvedTickets
+     *
+     * @param \AppBundle\Entity\Ticket\Ticket $resolvedTickets
+     */
+    public function removeResolvedTicket(\AppBundle\Entity\Ticket\Ticket $resolvedTickets)
+    {
+        $this->resolvedTickets->removeElement($resolvedTickets);
+    }
+
+    /**
+     * Get resolvedTickets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResolvedTickets()
+    {
+        return $this->resolvedTickets;
+    }
+
+    /**
+     * Add departments
+     *
+     * @param \AppBundle\Entity\Company\Department $departments
+     * @return User
+     */
+    public function addDepartment(\AppBundle\Entity\Company\Department $departments)
+    {
+        $this->departments[] = $departments;
+
+        return $this;
+    }
+
+    /**
+     * Remove departments
+     *
+     * @param \AppBundle\Entity\Company\Department $departments
+     */
+    public function removeDepartment(\AppBundle\Entity\Company\Department $departments)
+    {
+        $this->departments->removeElement($departments);
+    }
+
+    /**
+     * Get departments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepartments()
+    {
+        return $this->departments;
+    }
 }
+

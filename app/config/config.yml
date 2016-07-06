@@ -85,7 +85,7 @@ fos_user:
                 from_email:
                     address: anything@anymac.dk
                     sender_name: Anything CRM System
-                template: AppBundle:User\Email:registration.html.twig
+                template: :user/Email:registration.html.twig
                 enabled: true
 
 stof_doctrine_extensions:

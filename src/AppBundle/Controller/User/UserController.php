@@ -50,7 +50,7 @@ class UserController extends BaseController
     {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
-            throw $this->createAccessDeniedException($this->trans('user.access_denied', 'messages'));
+            throw $this->createAccessDeniedException($this->trans('user_access.controller.denied', 'messages'));
         }
 
         $form = $this->handleForm(UserPasswordType::class, $user, $request);

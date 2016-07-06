@@ -16,4 +16,4 @@ parameters:
     mailer_password: anythingtest12
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            7a306f6086e1c002c13dcfe543c9ab70f8f71aa9

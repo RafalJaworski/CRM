@@ -37,3 +37,7 @@ new_company:
         vat: 'VAT'
         note: 'Note'
         submit: 'Create Company'
+
+new_ticket:
+    label:
+        submit: 'Create Ticket'
