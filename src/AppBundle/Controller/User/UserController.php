@@ -26,7 +26,8 @@ class UserController extends BaseController
         $dispatcher = $this->get('event_dispatcher');
 
         $user = new User();
-        $form = $this->handleForm(UserType::class, $user, $request);
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
@@ -37,7 +38,7 @@ class UserController extends BaseController
             return $this->redirectAfterSuccess('fos_user_registration_register');
         }
 
-        return $this->showView(':user:new.html.twig', $form);
+        return $this->render(':user:new.html.twig',['form' =>$form]);
     }
 
     /**
@@ -53,14 +54,16 @@ class UserController extends BaseController
             throw $this->createAccessDeniedException($this->trans('user_access.controller.denied', 'messages'));
         }
 
-        $form = $this->handleForm(UserPasswordType::class, $user, $request);
+        $form = $this->createForm(UserPasswordType::class, $user);
+        $form->handleRequest($request);
+
         if ($form->isValid()) {
             $this->get('fos_user.user_manager')->updateUser($user);
 
             return $this->redirectAfterSuccess('fos_user_registration_confirmed');
         }
 
-        return $this->showView(':user:confirmed.html.twig', $form);
+        return $this->render(':user:confirmed.html.twig',['form' =>$form]);
     }
 }
 

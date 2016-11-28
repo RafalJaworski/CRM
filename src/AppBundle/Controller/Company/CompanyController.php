@@ -21,7 +21,8 @@ class CompanyController extends BaseController
     public function dashboardAction()
     {
         $company = $this->getUser()->getCompany();
-        $this->denyAccessUnlessGranted(User::ROLE_ANYMAC_USER, $company, $this->trans('user_access.controller.denied', 'messages'));
+        $this->denyAccessUnlessGranted(User::ROLE_ANYMAC_USER, $company,
+            $this->trans('user_access.controller.denied', 'messages'));
     }
 
     /**
@@ -31,7 +32,7 @@ class CompanyController extends BaseController
     {
         $form = $this->createForm(CompanyType::class, new Company());
 
-        return $this->showView('company/new.html.twig', $form);
+        return $this->render('company/new.html.twig',['form' =>$form]);
     }
 
     /**
@@ -39,7 +40,8 @@ class CompanyController extends BaseController
      */
     public function saveAction(Request $request)
     {
-        $form = $this->handleForm(CompanyType::class, new Company(), $request);
+        $form = $this->createForm(CompanyType::class, new Company());
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             $this->get('company_manager')->saveCompany($form->getData());
@@ -47,7 +49,7 @@ class CompanyController extends BaseController
             return $this->redirectAfterSuccess('admin_dashboard');
         }
 
-        return $this->showView('company/new.html.twig', $form);
+        return $this->render('company/new.html.twig',['form' =>$form]);
     }
 
     /**

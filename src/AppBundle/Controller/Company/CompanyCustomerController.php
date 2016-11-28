@@ -21,15 +21,5 @@ class CompanyCustomerController extends BaseController
     {
         $this->denyAccessUnlessGranted(User::ROLE_ADMIN, $company, $this->trans('user_access.controller.denied', 'messages'));
     }
-
-    /**
-     * User DASHBOARD
-     *
-     * @Route("/customer/{slug}/user", name="customer_user_dashboard")
-     */
-    public function userDashboardAction()
-    {
-
-    }
 }
 

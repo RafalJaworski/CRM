@@ -1,111 +1,120 @@
-<div class="row show-container-header">
+<div class="row show-details">
     <div class="col-md-12">
-        <div class="row col-md-6 show-container-name"><h4>{{result.name}}</h4></div>
-        <div class="row col-md-6 pull-right show-container-buttons">
+        <div class="row show-container-header">
+            <div class="col-md-12">
+            <div class=" col-md-6 show-container-name"><span><h4>{{result.name}}</h4></span></div>
+            <div class=" col-md-6 pull-right show-container-buttons">
             {%  if is_granted('ROLE_ANYMAC_USER') and result.assignedto == null %}
             <a href="#"  class="btn fa fa-plus custom-btn-sm"
-               title="{{ 'show.buttons.take'|trans({},'ticket') }}">
-                <span class="btn-txt-to-hide">{{ 'show.buttons.take'|trans({},'ticket') }}</span>
+            title="{{ 'show.buttons.take'|trans({},'ticket') }}">
+            <span class="btn-txt-to-hide">{{ 'show.buttons.take'|trans({},'ticket') }}</span>
             </a>
             {% endif %}
             <a href="#"  class="btn fa fa-check-square-o custom-btn-sm"
-               title="{{ 'show.buttons.done'|trans({},'ticket') }}">
-                <span class="btn-txt-to-hide-done">{{ 'show.buttons.done'|trans({},'ticket') }}</span>
+            title="{{ 'show.buttons.done'|trans({},'ticket') }}">
+            <span class="btn-txt-to-hide-done">{{ 'show.buttons.done'|trans({},'ticket') }}</span>
             </a>
             <a href="#"  class="btn fa fa-user-plus custom-btn-sm"
-               title="{{ 'show.buttons.assign'|trans({},'ticket') }}">
-                <span class="btn-txt-to-hide-assign">{{ 'show.buttons.assign'|trans({},'ticket') }}</span>
+            title="{{ 'show.buttons.assign'|trans({},'ticket') }}">
+            <span class="btn-txt-to-hide-assign">{{ 'show.buttons.assign'|trans({},'ticket') }}</span>
             </a>
             <a href="#"  class="btn fa fa-undo custom-btn-sm btn-undo"
-               title="{{ 'show.buttons.undo'|trans({},'ticket') }}">
-                <span class="btn-txt-to-hide-undo">{{ 'show.buttons.undo'|trans({},'ticket') }}</span>
+            title="{{ 'show.buttons.undo'|trans({},'ticket') }}">
+            <span class="btn-txt-to-hide-undo">{{ 'show.buttons.undo'|trans({},'ticket') }}</span>
             </a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12" style="margin-top: 20px; margin-bottom:20px;">
-        <div class="col-md-6 ">
-            <ul style="list-style-type: square; margin-left:-25px;">
-                <li><strong>{{ 'show.details.description'|trans({},'ticket') }} {{result.description}}</strong></li>
-
-                {% if result.priority == 0 %}
-                    {% set color = "color: green;" %}
-                {% elseif result.priority == 1 %}
-                    {% set color = "color: orange;" %}
-                {% elseif result.priority == 2 %}
-                    {% set color = "color: red;" %}
-                {% endif %}
-
-                <li><strong>{{ 'show.details.priority'|trans({},'ticket') }}</strong><span style="{{ color }}">
-                        {#repeated becouse can assign translated value to variable in twig#}
-                        {% if result.priority == 0 %}
-                            {{ 'show.details.priority_low'|trans({},'ticket') }}
-                        {% elseif result.priority == 1 %}
-                            {{ 'show.details.priority_medium'|trans({},'ticket') }}
-                        {% elseif result.priority == 2 %}
-                           {{ 'show.details.priority_high'|trans({},'ticket') }}
-                        {% endif %}
-                    </span>
-                </li>
-
-                {% if is_granted(constant('ROLE_ANYMAC_ADMIN',app.user)) %}
-                    <li>
-                        <strong>{{ 'show.details.time_spent'|trans({},'ticket') }}</strong>
-                        {{ result.timeSpent ~ 'show.details.minutes'|trans({},'ticket') }}
-                    </li>
-                {% endif %}
-
-                <li><strong>{{ 'show.details.company'|trans({},'ticket') }}</strong>{{ result.company.name }}</li>
-
-                {#NO LINK TO USER IN TISKETSHOW FOR CUSTOMER USER#}
-                {% if(not(is_granted(constant('ROLE_USER',app.user)))) %}
-                    <li style="{{ color }}"><strong>{{ 'show.details.created_by'|trans({},'ticket') }}</strong>
-                        <a href="#"class="show-link" data-ajax-entity="#">{{ result.createdBy }}</a>
-                    </li>
-                {% else %}
-                    <li>{{ 'show.details.created_by'|trans({},'ticket') }}{{ result.createdBy }}</li>
-                {% endif %}
-
-                {% if result.assignedTo != null %}
-                    <li>{{ 'show.details.assigned_to'|trans({},'ticket') }}
-                        <br><a href="#" class="show-link"
-                               data-ajax-entity="#">
-                        {{ '- ' ~ result.assignedTo }}</a>
-                    </li>
-                {% endif %}
-                {% if result.resolvedBy != null %}
-                    <li>{{ 'show.details.resolved_by'|trans({},'ticket') }}{{ result.resolvedBy }}</li>
-                {% endif %}
-                {% if result.resolvedAt != null %}
-                    <li>{{ 'show.details.resolved_at'|trans({},'ticket') }}{{ result.resolvedAt|date('d/m-Y H:i:s') }}</li>
-                {% endif %}
-                <li>{{ 'show.details.created_at'|trans({},'ticket') }}{{ result.createdAt|date('d/m-Y H:i:s') }}</li>
-            </ul>
-        </div>
-        <div class="col-md-6 show-container-thumbnail">
-            <div class="pull-right show-thumbnail">
-
+            </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row show-container-comments">
     <div class="col-md-12">
-        <div class="col-md-6 show-container-comments-header"
-             style="padding-left:0;">{{ 'show.details.comments'|trans({},'ticket') ~ '(?)'}}
+        <div class="col-md-12" style="margin-top: 20px; margin-bottom:20px;">
+            <div class="col-md-6 ">
+                <ul style="list-style-type: square; margin-left:-25px;">
+                    <li><strong>{{ 'show.details.description'|trans({},'ticket') }} {{result.description}}</strong></li>
+
+                    {% if result.priority == 0 %}
+                        {% set color = "color: green;" %}
+                    {% elseif result.priority == 1 %}
+                        {% set color = "color: orange;" %}
+                    {% elseif result.priority == 2 %}
+                        {% set color = "color: red;" %}
+                    {% endif %}
+
+                    <li><strong>{{ 'show.details.priority'|trans({},'ticket') }}</strong><span style="{{ color }}">
+                            {#repeated becouse can assign translated value to variable in twig#}
+                            {% if result.priority == 0 %}
+                                {{ 'show.details.priority_low'|trans({},'ticket') }}
+                            {% elseif result.priority == 1 %}
+                                {{ 'show.details.priority_medium'|trans({},'ticket') }}
+                            {% elseif result.priority == 2 %}
+                               {{ 'show.details.priority_high'|trans({},'ticket') }}
+                            {% endif %}
+                        </span>
+                    </li>
+
+                    {% if is_granted(constant('ROLE_ANYMAC_ADMIN',app.user)) %}
+                        <li>
+                            <strong>{{ 'show.details.time_spent'|trans({},'ticket') }}</strong>
+                            {{ result.timeSpent ~ 'show.details.minutes'|trans({},'ticket') }}
+                        </li>
+                    {% endif %}
+
+                    <li><strong>{{ 'show.details.company'|trans({},'ticket') }}</strong>{{ result.company.name }}</li>
+
+                    {#NO LINK TO USER IN TISKETSHOW FOR CUSTOMER USER#}
+                    {% if(not(is_granted(constant('ROLE_USER',app.user)))) %}
+                        <li style="{{ color }}"><strong>{{ 'show.details.created_by'|trans({},'ticket') }}</strong>
+                            <a href="#"class="show-link" data-ajax-entity="#">{{ result.createdBy }}</a>
+                        </li>
+                    {% else %}
+                        <li>{{ 'show.details.created_by'|trans({},'ticket') }}{{ result.createdBy }}</li>
+                    {% endif %}
+
+                    {% if result.assignedTo != null %}
+                        <li>{{ 'show.details.assigned_to'|trans({},'ticket') }}
+                            <br><a href="#" class="show-link"
+                                   data-ajax-entity="#">
+                            {{ '- ' ~ result.assignedTo }}</a>
+                        </li>
+                    {% endif %}
+                    {% if result.resolvedBy != null %}
+                        <li>{{ 'show.details.resolved_by'|trans({},'ticket') }}{{ result.resolvedBy }}</li>
+                    {% endif %}
+                    {% if result.resolvedAt != null %}
+                        <li>{{ 'show.details.resolved_at'|trans({},'ticket') }}{{ result.resolvedAt|date('d/m-Y H:i:s') }}</li>
+                    {% endif %}
+                    <li>{{ 'show.details.created_at'|trans({},'ticket') }}{{ result.createdAt|date('d/m-Y H:i:s') }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6 show-container-thumbnail">
+                <div class="pull-right show-thumbnail">
+
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 show-container-comments-btn">
-            {#jesli opened to wyswietl zeby skomentowac#}
-            <a href="#" class="btn custom-btn-sm  pull-right " style="margin-right: 0;">
+    </div>
+    <div class="col-md-12">
+        <div class="row show-container-comments">
+            <div class="col-md-12">
+                <div class="col-md-6 show-container-comments-header"
+                style="padding-left:0;">{{ 'show.details.comments'|trans({},'ticket') ~ '(?)'}}
+                </div>
+                <div class="col-md-6 show-container-comments-btn">
+                {#jesli opened to wyswietl zeby skomentowac#}
+                <a href="#" class="btn custom-btn-sm  pull-right " style="margin-right: 0;">
                 <span class="glyphicon glyphicon glyphicon-plus"></span>
                 <span class="btn-txt-to-hide-comment">{{ 'show.buttons.add'|trans({},'ticket') }}</span>
-            </a>
+                </a>
+                </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12">sdcsdcsdc</div>
 
-    </div>
 </div>
+{#{% if result.comments != null %}#}
+    {#<div class="row">#}
+        {#<div class="col-md-12">#}
+
+        {#</div>#}
+    {#</div>#}
+{#{% endif %}#}

@@ -6,6 +6,7 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Company\Company;
 use AppBundle\Entity\Ticket\Ticket;
 use AppBundle\Form\Ticket\TicketType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -13,7 +14,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class TicketController extends BaseController
 {
-
     /**
      * @Route("/ticket/new", name="new_ticket")
      */
@@ -21,7 +21,7 @@ class TicketController extends BaseController
     {
         $form = $this->createForm(TicketType::class, new Ticket());
 
-        return $this->showView('ticket/new.html.twig', $form);
+        return $this->render('ticket/new.html.twig', ['form' => $form]);
     }
 
     /**
@@ -29,7 +29,8 @@ class TicketController extends BaseController
      */
     public function saveAction(Request $request)
     {
-        $form = $this->handleForm(TicketType::class, new Ticket(), $request);
+        $form = $this->createForm(TicketType::class, new Ticket());
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
             $this->get('ticket_manager')->saveTicket($form->getData());
@@ -37,12 +38,12 @@ class TicketController extends BaseController
             return $this->redirectAfterSuccess('admin_dashboard');
         }
 
-        return $this->showView('ticket/new.html.twig', $form);
+        return $this->render('ticket/new.html.twig', ['form' => $form]);
     }
 
     /**
      * AJAX
-     * 
+     *
      * @Route("/{slug}/ticket/{id}/show", name="show_ticket")
      * @ParamConverter("company", class="AppBundle:Company\Company", options={"mapping": {"slug": "slug"}})
      */
@@ -50,9 +51,18 @@ class TicketController extends BaseController
     {
         $ticket = $this->tickets()->find($ticket);
 
-       return $this->ajaxView(':ticket:show.html.twig',$request,$ticket,$company);
+        if ($this->isPost($request)) {
+            return new JsonResponse(
+                [
+                    'content' => $this->renderView(':ticket:show.html.twig',
+                        [
+                            'ticket' => $ticket,
+                            'company' => $company
+                        ])
+                ]);
+        }
     }
-    
+
     /**
      * ALL OPENED TICKETS
      *
@@ -63,8 +73,7 @@ class TicketController extends BaseController
         $tickets = $this->tickets()->allOpened();
         $this->isArrayEmpty($tickets);
 
-        return $this->showView(':ticket:opened.html.twig', null, $tickets, $this->getCompany());
-
+        return $this->render('ticket/new.html.twig', ['ticket' => $tickets, 'company' => $this->getCompany()]);
     }
 }
 

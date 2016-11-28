@@ -114,7 +114,7 @@ textarea {
 /*END OF LIST*/
 
 /*SHOW*/
-.show-container{
+.show-details{
     background-color: white;
     border: 1px solid #364252;
     border-radius: 8px;
@@ -152,7 +152,7 @@ textarea {
     width:80px;
     height: 100px;
 }
-.show-container-thumbnail,
+/*.show-container-thumbnail,*/
 .show-container-comments-btn{
     padding-right: 0;
 }
@@ -344,31 +344,31 @@ textarea {
     }
     /* END OF GENERAL */
 
-    /* SHOW */
-    .show-container-comments-btn{
-        padding-right: 0;
-    }
-    /* END SHOW */
+    /*!* SHOW *!*/
+    /*.show-container-comments-btn{*/
+        /*padding-right: 0;*/
+    /*}*/
+    /*!* END SHOW *!*/
 
 }
 @media (min-width: 633px) and (max-width: 640px){
-    /* SHOW */
-    .btn-txt-to-hide-done{
-        display: inline-block;
-    }
-    .btn-txt-to-hide-assign{
-        display: inline-block;
-    }
-    .btn-txt-to-hide-undo{
-        display: inline-block;
-    }
-    .show-container-buttons{
-        margin: 0px auto;
-        padding: 0px;
-        width: 100%;
-        text-align: center;
-    }
-    /* END OF SHOW*/
+    /*!* SHOW *!*/
+    /*.btn-txt-to-hide-done{*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.btn-txt-to-hide-assign{*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.btn-txt-to-hide-undo{*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.show-container-buttons{*/
+        /*margin: 0px auto;*/
+        /*padding: 0px;*/
+        /*width: 100%;*/
+        /*text-align: center;*/
+    /*}*/
+    /*!* END OF SHOW*!*/
 
     /* GENERAL */
     .custom-btn-sm{
@@ -383,42 +383,42 @@ textarea {
     }
     /* END OF LIST */
 
-    /* SHOW */
-    .btn-txt-to-hide{
-        display: inline-block !important;
-    }
+    /*!* SHOW *!*/
+    /*.btn-txt-to-hide{*/
+        /*display: inline-block !important;*/
+    /*}*/
 
-    .show-container-buttons{
-        margin: 0px auto;
-        padding: 0px;
-        width: 100%;
-        text-align: center;
-    }
-    .btn-txt-to-hide-comment{
-        display: none;
-    }
-    /* END OF SHOW */
+    /*.show-container-buttons{*/
+        /*margin: 0px auto;*/
+        /*padding: 0px;*/
+        /*width: 100%;*/
+        /*text-align: center;*/
+    /*}*/
+    /*.btn-txt-to-hide-comment{*/
+        /*display: none;*/
+    /*}*/
+    /*!* END OF SHOW *!*/
 }
 @media (max-width: 980px){
-    /* SHOW */
-    .show-container-comments-header
-    {
-        width: 50%;
-        float:left;
-        line-height: 37px;
-    }
-    .show-container-comments-btn{
-        width: 50%;
-        float: right;
-        line-height: 37px;
-    }
-    .show-container-comments{
-        background-color: #364252;
-        color:white;
-        margin-top: 10px;
-        padding-top: 7px;
-        padding-bottom: 0px;
-    }none/* END OF SHOW */
+    /*!* SHOW *!*/
+    /*.show-container-comments-header*/
+    /*{*/
+        /*width: 50%;*/
+        /*float:left;*/
+        /*line-height: 37px;*/
+    /*}*/
+    /*.show-container-comments-btn{*/
+        /*width: 50%;*/
+        /*float: right;*/
+        /*line-height: 37px;*/
+    /*}*/
+    /*.show-container-comments{*/
+        /*background-color: #364252;*/
+        /*color:white;*/
+        /*margin-top: 10px;*/
+        /*padding-top: 7px;*/
+        /*padding-bottom: 0px;*/
+    /*}!* END OF SHOW *!*/
 }
 @media (max-width: 767px) {
     /* MENU */
@@ -498,22 +498,22 @@ textarea {
     }
     /* END OF LAYOUT */
 
-    /* SHOW */
-    .show-container-name{
-        width: 45%;
-        float:left;
-    }
-    .show-container-buttons{
-        width: 45%;
-        float: right;
-    }
-    .btn-txt-to-hide{
-        display: none;
-    }
-    .btn-txt-to-hide-undo{
-        display: none;
-    }
-    /* END OF SHOW */
+    /*!* SHOW *!*/
+    /*.show-container-name{*/
+        /*width: 45%;*/
+        /*float:left;*/
+    /*}*/
+    /*.show-container-buttons{*/
+        /*width: 45%;*/
+        /*float: right;*/
+    /*}*/
+    /*.btn-txt-to-hide{*/
+        /*display: none;*/
+    /*}*/
+    /*.btn-txt-to-hide-undo{*/
+        /*display: none;*/
+    /*}*/
+    /*!* END OF SHOW *!*/
 
     /* GENERAL */
     .custom-btn-sm{
@@ -563,28 +563,28 @@ textarea {
     /* END OF MENU */
 }
 @media (max-width: 1699px){
-    /* SHOW */
-    .btn-txt-to-hide{
-        display: none;
-    }
-    /* END OF SHOW */
+    /*!* SHOW *!*/
+    /*.btn-txt-to-hide{*/
+        /*display: none;*/
+    /*}*/
+    /*!* END OF SHOW *!*/
 }
 @media (min-width: 981px) and (max-width: 1280px){
-    /* SHOW */
-    .show-container-buttons{
-        width:100%;
-        text-align: left;
-        margin: 0 auto;
-        padding: 0;
-        float:left !important;
-    }
-    .btn-txt-to-hide{
-        display: inline-block;
-    }
-    .btn-txt-to-hide-undo{
-        display: inline-block;
-    }
-    /* END OF SHOW */
+    /*!* SHOW *!*/
+    /*.show-container-buttons{*/
+        /*width:100%;*/
+        /*text-align: left;*/
+        /*margin: 0 auto;*/
+        /*padding: 0;*/
+        /*float:left !important;*/
+    /*}*/
+    /*.btn-txt-to-hide{*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.btn-txt-to-hide-undo{*/
+        /*display: inline-block;*/
+    /*}*/
+    /*!* END OF SHOW *!*/
 
     /* GENERAL */
     .custom-btn-sm{

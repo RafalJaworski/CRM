@@ -54,7 +54,7 @@ $(document).ready(function () {
                 url: $(this).data('ajax-entity'),
                 success: function (data) {
                     $('.show-container').show();
-                    $('.show-details').html(data.content);
+                    $('.show-container').html(data.content);
                   
 
                 }
